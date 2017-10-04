@@ -13,9 +13,11 @@
 		79B3C1A21F851267001A9FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A11F851267001A9FB3 /* Assets.xcassets */; };
 		79B3C1A51F851267001A9FB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A31F851267001A9FB3 /* LaunchScreen.storyboard */; };
 		79B3C1AE1F851645001A9FB3 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */; };
+		D79FF514D2A9F9E77C6CB961 /* Pods_NaftaRozklad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21B1808456216D725AD7F549 /* Pods-NaftaRozklad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaftaRozklad.release.xcconfig"; path = "Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad.release.xcconfig"; sourceTree = "<group>"; };
 		79B3C1971F851267001A9FB3 /* NaftaRozklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaftaRozklad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B3C19A1F851267001A9FB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79B3C19C1F851267001A9FB3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		79B3C1A41F851267001A9FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79B3C1A61F851267001A9FB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaftaRozklad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE041573348E51335144C60D /* Pods-NaftaRozklad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaftaRozklad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79FF514D2A9F9E77C6CB961 /* Pods_NaftaRozklad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		342A1B3BAF855F5DCB8A36F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE041573348E51335144C60D /* Pods-NaftaRozklad.debug.xcconfig */,
+				21B1808456216D725AD7F549 /* Pods-NaftaRozklad.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		36B639F00AA0DC8F8304A954 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		79B3C18E1F851267001A9FB3 = {
 			isa = PBXGroup;
 			children = (
 				79B3C1991F851267001A9FB3 /* NaftaRozklad */,
 				79B3C1981F851267001A9FB3 /* Products */,
+				342A1B3BAF855F5DCB8A36F0 /* Pods */,
+				36B639F00AA0DC8F8304A954 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,9 +106,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79B3C1A91F851267001A9FB3 /* Build configuration list for PBXNativeTarget "NaftaRozklad" */;
 			buildPhases = (
+				A003680377F78F24648DCD8F /* [CP] Check Pods Manifest.lock */,
 				79B3C1931F851267001A9FB3 /* Sources */,
 				79B3C1941F851267001A9FB3 /* Frameworks */,
 				79B3C1951F851267001A9FB3 /* Resources */,
+				7B7C2AE3E2BE25DDAB1DF05D /* [CP] Embed Pods Frameworks */,
+				601E415A1E71DAF32432D981 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -141,6 +168,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		601E415A1E71DAF32432D981 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B7C2AE3E2BE25DDAB1DF05D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A003680377F78F24648DCD8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NaftaRozklad-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		79B3C1931F851267001A9FB3 /* Sources */ = {
@@ -284,6 +367,7 @@
 		};
 		79B3C1AA1F851267001A9FB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE041573348E51335144C60D /* Pods-NaftaRozklad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +383,7 @@
 		};
 		79B3C1AB1F851267001A9FB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21B1808456216D725AD7F549 /* Pods-NaftaRozklad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
