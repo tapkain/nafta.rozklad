@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.naftarozklad"
         minSdkVersion 19
@@ -46,4 +46,7 @@ dependencies {
 
     implementation 'com.jakewharton:butterknife:8.8.1'
     kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation "android.arch.persistence.room:runtime:1.0.0-alpha9-1"
+    kapt "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
 }
