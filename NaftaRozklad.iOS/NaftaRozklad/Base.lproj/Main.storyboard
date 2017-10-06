@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" id="sog-O7-qZ7" customClass="LoginTableViewCell" customModule="NaftaRozklad" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="LoginTableViewCell" id="sog-O7-qZ7" customClass="LoginTableViewCell" customModule="NaftaRozklad" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sog-O7-qZ7" id="MIl-wx-YvY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fs-gU-MjW">
-                                            <rect key="frame" x="18" y="11" width="97" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-DC-CUA">
+                                            <rect key="frame" x="18" y="11" width="42" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="KR0-lk-IvI"/>
+                                                <constraint firstAttribute="height" constant="21" id="d9F-Dc-3X2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -36,13 +36,13 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="2Fs-gU-MjW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MIl-wx-YvY" secondAttribute="leadingMargin" id="8Cl-D5-iRP"/>
-                                        <constraint firstAttribute="trailing" secondItem="2Fs-gU-MjW" secondAttribute="trailingMargin" constant="268" id="9jz-6V-fkI"/>
-                                        <constraint firstItem="2Fs-gU-MjW" firstAttribute="top" secondItem="MIl-wx-YvY" secondAttribute="topMargin" constant="3" id="n3y-Wq-tev"/>
+                                        <constraint firstItem="QZD-DC-CUA" firstAttribute="leading" secondItem="MIl-wx-YvY" secondAttribute="leadingMargin" constant="10" id="Npy-Au-fX0"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QZD-DC-CUA" secondAttribute="trailingMargin" id="QKb-x4-hGt"/>
+                                        <constraint firstItem="QZD-DC-CUA" firstAttribute="top" secondItem="MIl-wx-YvY" secondAttribute="topMargin" constant="3" id="wkQ-Dd-vrx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="groupNameLabel" destination="2Fs-gU-MjW" id="Pw2-2a-h1R"/>
+                                    <outlet property="groupNameLabel" destination="QZD-DC-CUA" id="awc-oc-fYX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
