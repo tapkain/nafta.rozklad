@@ -26,6 +26,18 @@ class LoginViewController: UITableViewController {
     
     return cell
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let groupName = groups[indexPath.row].name
+    let alertController = UIAlertController(title: "Do you really want to choose " + groupName, message: nil, preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "NO", style: .cancel)
+    let okAction = UIAlertAction(title: "YES", style: .default) { action in
+      //present VC here
+    }
+    alertController.addAction(okAction)
+    alertController.addAction(cancelAction)
+    present(alertController, animated: true)
+  }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return groups.count
@@ -37,16 +49,21 @@ class LoginViewController: UITableViewController {
 
   func fetchGroups() {
     ApiManager.sharedInstance.getUniversityGroups { groups in
-      self.realm.deleteAll()
-      
       try! self.realm.write() {
+        let groupsToDelete = self.realm.objects(UniversityGroup.self)
+        self.realm.delete(groupsToDelete)
+
+        
         for group in groups {
           self.realm.add(group)
         }
       }
       
       self.groups = self.realm.objects(UniversityGroup.self)
-      self.tableView.reloadData()
+      
+      DispatchQueue.main.async {
+        self.tableView.reloadData()
+      }
     }
   }
 }
