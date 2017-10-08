@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * Created by Bohdan.Shvets on 04.10.2017
  */
 
-@Entity
+@Entity(tableName = "groups")
 class Group {
 
 	@PrimaryKey

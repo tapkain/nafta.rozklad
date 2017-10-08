@@ -1,6 +1,7 @@
 package com.naftarozklad.dagger.modules
 
 import com.naftarozklad.repo.internal.GlobalCache
+import com.naftarozklad.repo.internal.db.DBManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +14,5 @@ class CacheModule {
 
 	@Provides
 	@Singleton
-	fun provideGlobalCache(): GlobalCache {
-		return GlobalCache()
-	}
+	fun provideGlobalCache(dbManager: DBManager): GlobalCache = GlobalCache(dbManager)
 }

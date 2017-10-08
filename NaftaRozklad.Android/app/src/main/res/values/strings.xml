@@ -1,3 +1,11 @@
 <resources>
 	<string name="app_name">NaftaRozklad</string>
+	
+	<string name="lbl_numerator">Чисельник</string>
+	<string name="lbl_denominator">Знаменник</string>
+
+	<string name="lbl_first_subgroup">Перша підгрупа</string>
+	<string name="lbl_second_subgroup">Друга підгрупа</string>
+
+	<string name="lbl_type_group_name">Введіть назву групи</string>
 </resources>
