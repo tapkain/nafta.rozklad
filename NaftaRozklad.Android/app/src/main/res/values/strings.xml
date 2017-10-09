@@ -7,5 +7,7 @@
 	<string name="lbl_first_subgroup">Перша підгрупа</string>
 	<string name="lbl_second_subgroup">Друга підгрупа</string>
 
-	<string name="lbl_type_group_name">Введіть назву групи</string>
+	<string name="lbl_enter_group_name">Введіть назву групи</string>
+
+	<string name="lbl_no_network">Немає з\'єднання</string>
 </resources>

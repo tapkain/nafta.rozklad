@@ -9,9 +9,11 @@ import com.naftarozklad.RozkladApp
  */
 class NetworkHelper {
 
-	fun isNetworkAvailable(): Boolean {
-		val connectivityManager = RozkladApp.applicationComponent.context().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager;
-		val activeNetworkInfo = connectivityManager.activeNetworkInfo;
-		return activeNetworkInfo != null && activeNetworkInfo.isConnected;
+	companion object {
+		fun isNetworkAvailable(): Boolean {
+			val connectivityManager = RozkladApp.applicationComponent.context().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager;
+			val activeNetworkInfo = connectivityManager.activeNetworkInfo;
+			return activeNetworkInfo != null && activeNetworkInfo.isConnected;
+		}
 	}
 }

@@ -27,17 +27,30 @@ class MainPresenter @Inject constructor(
 		mainView.setRefreshAction { initFromExternalRepo() }
 
 		initCacheUseCase.initInternalRepo {
-			if (initCacheUseCase.isGroupsCacheEmpty()) {
-				initFromExternalRepo()
-			} else {
+			if (!initCacheUseCase.isGroupsCacheEmpty()) {
 				initList()
+				return@initInternalRepo
 			}
+
+			if (!mainUseCase.isNetworkAvailable()) {
+				mainView.setNetworkAvailable(false)
+				return@initInternalRepo
+			}
+
+			initFromExternalRepo()
 		}
 	}
 
 	private fun initFromExternalRepo() {
+		if (!mainUseCase.isNetworkAvailable()) {
+			mainView.stopRefresh()
+			return
+		}
+
 		initCacheUseCase.initGroupsFromExternalRepo {
 			initList()
+			mainView.stopRefresh()
+			mainView.setNetworkAvailable(true)
 		}
 	}
 

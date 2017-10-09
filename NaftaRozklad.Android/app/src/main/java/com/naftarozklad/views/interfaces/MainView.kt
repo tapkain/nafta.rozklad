@@ -16,4 +16,8 @@ interface MainView : View {
 	fun setFilterText(filterText: String)
 
 	fun setRefreshAction(action: () -> Unit)
+
+	fun stopRefresh()
+
+	fun setNetworkAvailable(isAvailable: Boolean)
 }

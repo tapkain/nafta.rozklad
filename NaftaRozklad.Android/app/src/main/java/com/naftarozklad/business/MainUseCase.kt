@@ -3,6 +3,7 @@ package com.naftarozklad.business
 import com.naftarozklad.repo.external.WebApi
 import com.naftarozklad.repo.internal.GlobalCache
 import com.naftarozklad.repo.models.Group
+import com.naftarozklad.utils.NetworkHelper
 import javax.inject.Inject
 
 /**
@@ -16,5 +17,9 @@ class MainUseCase @Inject constructor(private val globalCache: GlobalCache, priv
 		return globalCache.cachedGroups
 				.filter { it.name.contains(filterString, true) }
 				.map { it.id }
+	}
+
+	fun isNetworkAvailable(): Boolean {
+		return NetworkHelper.isNetworkAvailable()
 	}
 }

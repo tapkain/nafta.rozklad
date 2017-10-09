@@ -31,7 +31,7 @@ class InitCacheUseCase @Inject constructor(
 	}
 
 	fun initGroupsFromExternalRepo(callback: () -> Unit) {
-		if (!NetworkHelper().isNetworkAvailable())
+		if (!NetworkHelper.isNetworkAvailable())
 			return
 
 		doAsync {
@@ -39,10 +39,12 @@ class InitCacheUseCase @Inject constructor(
 
 			response.body()?.let {
 				globalCache.clearGroups()
-				globalCache.insertGroups(it.toMutableList())
+				val mutableResult = it.toMutableList()
+				mutableResult.sortBy { it.id }
+				globalCache.insertGroups(mutableResult)
 			}
 
-			callback()
+			uiThread { callback() }
 		}
 	}
 }
