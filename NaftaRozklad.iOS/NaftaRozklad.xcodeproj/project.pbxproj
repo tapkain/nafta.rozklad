@@ -13,6 +13,8 @@
 		79B3C1A21F851267001A9FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A11F851267001A9FB3 /* Assets.xcassets */; };
 		79B3C1A51F851267001A9FB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A31F851267001A9FB3 /* LaunchScreen.storyboard */; };
 		79B3C1AE1F851645001A9FB3 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */; };
+		79E7D8431F89148200972401 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D8421F89148200972401 /* LessonViewController.swift */; };
+		79E7D8451F8915D400972401 /* LessonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D8441F8915D400972401 /* LessonTableViewCell.swift */; };
 		79EC9CA31F851B6700E0F925 /* UniversityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC9CA21F851B6700E0F925 /* UniversityGroup.swift */; };
 		79EC9CA61F8744D300E0F925 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC9CA51F8744D300E0F925 /* ApiManager.swift */; };
 		D79FF514D2A9F9E77C6CB961 /* Pods_NaftaRozklad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */; };
@@ -28,6 +30,8 @@
 		79B3C1A41F851267001A9FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79B3C1A61F851267001A9FB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		79E7D8421F89148200972401 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
+		79E7D8441F8915D400972401 /* LessonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTableViewCell.swift; sourceTree = "<group>"; };
 		79EC9CA21F851B6700E0F925 /* UniversityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityGroup.swift; sourceTree = "<group>"; };
 		79EC9CA51F8744D300E0F925 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaftaRozklad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,7 @@
 		79B3C1991F851267001A9FB3 /* NaftaRozklad */ = {
 			isa = PBXGroup;
 			children = (
+				79E7D8411F89141B00972401 /* LessonScene */,
 				79EC9CA41F8744BD00E0F925 /* WebApi */,
 				79B3C1AC1F85140B001A9FB3 /* LoginScene */,
 				79B3C19A1F851267001A9FB3 /* AppDelegate.swift */,
@@ -103,6 +108,15 @@
 				79EC9CA21F851B6700E0F925 /* UniversityGroup.swift */,
 			);
 			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		79E7D8411F89141B00972401 /* LessonScene */ = {
+			isa = PBXGroup;
+			children = (
+				79E7D8421F89148200972401 /* LessonViewController.swift */,
+				79E7D8441F8915D400972401 /* LessonTableViewCell.swift */,
+			);
+			path = LessonScene;
 			sourceTree = "<group>";
 		};
 		79EC9CA41F8744BD00E0F925 /* WebApi */ = {
@@ -254,6 +268,8 @@
 				79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */,
 				79EC9CA61F8744D300E0F925 /* ApiManager.swift in Sources */,
 				79B3C1AE1F851645001A9FB3 /* LoginTableViewCell.swift in Sources */,
+				79E7D8431F89148200972401 /* LessonViewController.swift in Sources */,
+				79E7D8451F8915D400972401 /* LessonTableViewCell.swift in Sources */,
 				79EC9CA31F851B6700E0F925 /* UniversityGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
