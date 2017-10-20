@@ -1,23 +1,19 @@
 package com.naftarozklad.views.activities
 
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.AppCompatEditText
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnTextChanged
+import android.text.Editable
+import android.text.TextWatcher
 import com.naftarozklad.R
 import com.naftarozklad.RozkladApp
 import com.naftarozklad.presenters.MainPresenter
 import com.naftarozklad.views.interfaces.MainView
 import com.naftarozklad.views.lists.adapters.GroupsAdapter
 import com.naftarozklad.views.lists.viewmodels.GroupViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.contentView
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -25,26 +21,26 @@ class MainActivity : AppCompatActivity(), MainView {
 	@Inject
 	lateinit var presenter: MainPresenter
 
-	@BindView(R.id.swipe_refresh_layout)
-	lateinit var swipeRefreshLayout: SwipeRefreshLayout
-	@BindView(R.id.et_search)
-	lateinit var searchView: AppCompatEditText
-	@BindView(R.id.recycler_view)
-	lateinit var recyclerView: RecyclerView
-	@BindView(R.id.lbl_network)
-	lateinit var lblNoNetwork: TextView
-
 	private lateinit var textChangedAction: (String) -> Unit
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
-		ButterKnife.bind(this)
 		RozkladApp.applicationComponent.inject(this)
 
 		recyclerView.layoutManager = LinearLayoutManager(this)
 
 		presenter.attachView(this)
+
+		etSearch.addTextChangedListener(object : TextWatcher {
+			override fun afterTextChanged(s: Editable?) {}
+
+			override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+				s?.toString()?.let { text -> textChangedAction(text) }
+			}
+		})
 	}
 
 	override fun setTextChangedAction(action: (String) -> Unit) {
@@ -59,24 +55,15 @@ class MainActivity : AppCompatActivity(), MainView {
 		recyclerView.adapter = GroupsAdapter(groupIds, bindAction)
 	}
 
-	override fun setNetworkAvailable(isAvailable: Boolean) {
-		lblNoNetwork.visibility = if (isAvailable) GONE else VISIBLE
+	override fun networkUnavailable() {
+		contentView?.let { Snackbar.make(it, "No Internet Connection", Snackbar.LENGTH_SHORT) }
 	}
 
 	override fun stopRefresh() {
 		swipeRefreshLayout.isRefreshing = false
 	}
 
-	override fun getFilterText(): String {
-		return searchView.text.toString()
-	}
+	override fun getFilterText() = etSearch.text.toString()
 
-	override fun setFilterText(filterText: String) {
-		searchView.setText(filterText)
-	}
-
-	@OnTextChanged(R.id.et_search)
-	fun searchTextChanged(text: CharSequence) {
-		textChangedAction(text.toString())
-	}
+	override fun setFilterText(filterText: String) = etSearch.setText(filterText)
 }

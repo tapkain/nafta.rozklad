@@ -19,5 +19,5 @@ interface MainView : View {
 
 	fun stopRefresh()
 
-	fun setNetworkAvailable(isAvailable: Boolean)
+	fun networkUnavailable()
 }

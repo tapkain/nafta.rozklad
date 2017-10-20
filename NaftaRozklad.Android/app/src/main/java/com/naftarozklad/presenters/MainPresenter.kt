@@ -17,7 +17,7 @@ class MainPresenter @Inject constructor(
 	lateinit var mainView: MainView
 
 	private val bindAction: (GroupViewModel) -> Unit = fun(viewModel) {
-		viewModel.description.text = mainUseCase.getGroupById(viewModel.id)?.name
+		viewModel.description = mainUseCase.getGroupById(viewModel.id)?.name
 	}
 
 	override fun attachView(view: MainView) {
@@ -33,7 +33,7 @@ class MainPresenter @Inject constructor(
 			}
 
 			if (!mainUseCase.isNetworkAvailable()) {
-				mainView.setNetworkAvailable(false)
+				mainView.networkUnavailable()
 				return@initInternalRepo
 			}
 
@@ -50,7 +50,6 @@ class MainPresenter @Inject constructor(
 		initCacheUseCase.initGroupsFromExternalRepo {
 			initList()
 			mainView.stopRefresh()
-			mainView.setNetworkAvailable(true)
 		}
 	}
 
