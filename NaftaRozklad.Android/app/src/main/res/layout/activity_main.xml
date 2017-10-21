@@ -9,7 +9,7 @@
 	android:background="@color/default_background"
 	android:focusable="true"
 	android:focusableInTouchMode="true"
-	tools:context="com.naftarozklad.views.activities.MainActivity">
+	tools:context="com.naftarozklad.views.activities.GroupsActivity">
 
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"

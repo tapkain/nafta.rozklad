@@ -1,15 +1,15 @@
 package com.naftarozklad.views.interfaces
 
-import com.naftarozklad.views.lists.viewmodels.GroupViewModel
+import com.naftarozklad.repo.models.Group
 
 /**
  * Created by Bohdan.Shvets on 04.10.2017
  */
-interface MainView : View {
+interface GroupsView : View {
 
 	fun setTextChangedAction(action: (String) -> Unit)
 
-	fun setViewModelBindAction(groupIds: List<Int>, bindAction: (GroupViewModel) -> Unit)
+	fun setListItems(groups: List<Group>)
 
 	fun getFilterText(): String
 

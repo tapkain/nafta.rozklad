@@ -10,7 +10,7 @@ import javax.inject.Inject
  */
 class DBManager @Inject constructor(var context: Context) {
 
-	lateinit var rozkladDatabase: RozkladDatabase;
+	lateinit var rozkladDatabase: RozkladDatabase
 
 	fun initDatabase() {
 		Log.d(DBManager::class.java.simpleName, "Init Database start")

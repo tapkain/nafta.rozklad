@@ -4,7 +4,7 @@ import android.content.Context
 import com.naftarozklad.dagger.modules.ApplicationModule
 import com.naftarozklad.dagger.modules.CacheModule
 import com.naftarozklad.dagger.modules.RetrofitModule
-import com.naftarozklad.views.activities.MainActivity
+import com.naftarozklad.views.activities.GroupsActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,5 +16,5 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 	fun  context(): Context
 
-	fun inject(activity: MainActivity)
+	fun inject(activity: GroupsActivity)
 }

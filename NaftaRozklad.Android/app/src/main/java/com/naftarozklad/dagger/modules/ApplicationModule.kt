@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by Bohdan.Shvets on 05.10.2017
  */
 @Module
-class ApplicationModule constructor(val application: RozkladApp) {
+class ApplicationModule(private val application: RozkladApp) {
 
 	@Provides
 	@Singleton

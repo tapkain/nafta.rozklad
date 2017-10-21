@@ -2,29 +2,24 @@ package com.naftarozklad.presenters
 
 import com.naftarozklad.business.InitCacheUseCase
 import com.naftarozklad.business.MainUseCase
-import com.naftarozklad.views.interfaces.MainView
-import com.naftarozklad.views.lists.viewmodels.GroupViewModel
+import com.naftarozklad.views.interfaces.GroupsView
 import javax.inject.Inject
 
 /**
  * Created by bohdan on 10/4/17
  */
-class MainPresenter @Inject constructor(
+class GroupsPresenter @Inject constructor(
 		private val mainUseCase: MainUseCase,
 		private val initCacheUseCase: InitCacheUseCase
-) : Presenter<MainView> {
+) : Presenter<GroupsView> {
 
-	lateinit var mainView: MainView
+	lateinit var groupsView: GroupsView
 
-	private val bindAction: (GroupViewModel) -> Unit = fun(viewModel) {
-		viewModel.description = mainUseCase.getGroupById(viewModel.id)?.name
-	}
+	override fun attachView(view: GroupsView) {
+		groupsView = view
 
-	override fun attachView(view: MainView) {
-		mainView = view
-
-		mainView.setTextChangedAction { initList() }
-		mainView.setRefreshAction { initFromExternalRepo() }
+		groupsView.setTextChangedAction { initList() }
+		groupsView.setRefreshAction { initFromExternalRepo() }
 
 		initCacheUseCase.initInternalRepo {
 			if (!initCacheUseCase.isGroupsCacheEmpty()) {
@@ -33,7 +28,7 @@ class MainPresenter @Inject constructor(
 			}
 
 			if (!mainUseCase.isNetworkAvailable()) {
-				mainView.networkUnavailable()
+				groupsView.networkUnavailable()
 				return@initInternalRepo
 			}
 
@@ -43,18 +38,18 @@ class MainPresenter @Inject constructor(
 
 	private fun initFromExternalRepo() {
 		if (!mainUseCase.isNetworkAvailable()) {
-			mainView.stopRefresh()
+			groupsView.stopRefresh()
 			return
 		}
 
 		initCacheUseCase.initGroupsFromExternalRepo {
 			initList()
-			mainView.stopRefresh()
+			groupsView.stopRefresh()
 		}
 	}
 
 	private fun initList() {
-		mainView.setViewModelBindAction(mainUseCase.getGroupIds(mainView.getFilterText()), bindAction)
+		groupsView.setListItems(mainUseCase.getGroups(groupsView.getFilterText()))
 	}
 
 	override fun detachView() {}
