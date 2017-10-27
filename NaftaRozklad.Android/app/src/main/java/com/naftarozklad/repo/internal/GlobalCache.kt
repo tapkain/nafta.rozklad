@@ -2,8 +2,6 @@ package com.naftarozklad.repo.internal
 
 import com.naftarozklad.repo.internal.db.DBManager
 import com.naftarozklad.repo.models.Group
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import javax.inject.Inject
 
 /**
@@ -13,13 +11,9 @@ class GlobalCache @Inject constructor(private var dbManager: DBManager) {
 
 	lateinit var cachedGroups: MutableList<Group>
 
-	fun initDatabase(callback: () -> Unit) {
-		doAsync {
-			dbManager.initDatabase()
-			cachedGroups = dbManager.rozkladDatabase.groupsDAO().getGroups().toMutableList()
-
-			uiThread { callback() }
-		}
+	fun initDatabase() {
+		dbManager.initDatabase()
+		cachedGroups = dbManager.rozkladDatabase.groupsDAO().getGroups().toMutableList()
 	}
 
 	fun clearGroups() {

@@ -8,10 +8,9 @@ import javax.inject.Inject
 /**
  * Created by bohdan on 10/4/17
  */
-class MainUseCase @Inject constructor(private val globalCache: GlobalCache) {
+class GroupsUseCase @Inject constructor(private val globalCache: GlobalCache) {
 
-	fun getGroups(filterString: String): List<Group> =
-			globalCache.cachedGroups.filter { it.name.contains(filterString, true) }
+	fun getGroups(filterString: String): List<Group> = globalCache.cachedGroups.filter { it.name.contains(filterString, true) }
 
 	fun isNetworkAvailable(): Boolean = NetworkHelper.isNetworkAvailable()
 }

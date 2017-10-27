@@ -19,5 +19,5 @@ interface GroupsView : View {
 
 	fun stopRefresh()
 
-	fun networkUnavailable()
+	fun onError(errorMessage: String)
 }

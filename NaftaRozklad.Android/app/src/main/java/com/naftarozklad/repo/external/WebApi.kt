@@ -10,5 +10,5 @@ import retrofit2.http.GET
 interface WebApi {
 
 	@GET("api/groups.php")
-	fun getGroups(): Call<Array<Group>>
+	fun getGroups(): Call<List<Group>>
 }

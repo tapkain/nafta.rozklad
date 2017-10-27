@@ -4,10 +4,13 @@
 	<string name="lbl_numerator">Чисельник</string>
 	<string name="lbl_denominator">Знаменник</string>
 
-	<string name="lbl_first_subgroup">Перша підгрупа</string>
-	<string name="lbl_second_subgroup">Друга підгрупа</string>
+	<string name="lbl_first_subgroup">Перша Підгрупа</string>
+	<string name="lbl_second_subgroup">Друга Підгрупа</string>
 
 	<string name="lbl_enter_group_name">Введіть назву групи</string>
 
-	<string name="lbl_no_network">Немає з\'єднання</string>
+	<string name="lbl_no_network">Немає з\'єднання з Інтернетом</string>
+	<string name="lbl_unknown_error">Невідома Помилка</string>
+	<string name="lbl_server_error">Помилка Сервера</string>
+	<string name="lbl_service_unavailable">Сервіс Недоступний</string>
 </resources>

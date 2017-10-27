@@ -1,7 +1,9 @@
 package com.naftarozklad.presenters
 
+import com.naftarozklad.business.GroupsUseCase
 import com.naftarozklad.business.InitCacheUseCase
-import com.naftarozklad.business.MainUseCase
+import com.naftarozklad.business.SynchronizeCallback
+import com.naftarozklad.business.SynchronizeGroupsUseCase
 import com.naftarozklad.views.interfaces.GroupsView
 import javax.inject.Inject
 
@@ -9,8 +11,9 @@ import javax.inject.Inject
  * Created by bohdan on 10/4/17
  */
 class GroupsPresenter @Inject constructor(
-		private val mainUseCase: MainUseCase,
-		private val initCacheUseCase: InitCacheUseCase
+		private val groupsUseCase: GroupsUseCase,
+		private val initCacheUseCase: InitCacheUseCase,
+		private val synchronizeGroupsUseCase: SynchronizeGroupsUseCase
 ) : Presenter<GroupsView> {
 
 	lateinit var groupsView: GroupsView
@@ -19,37 +22,34 @@ class GroupsPresenter @Inject constructor(
 		groupsView = view
 
 		groupsView.setTextChangedAction { initList() }
-		groupsView.setRefreshAction { initFromExternalRepo() }
+		groupsView.setRefreshAction { synchronizeGroups() }
 
-		initCacheUseCase.initInternalRepo {
-			if (!initCacheUseCase.isGroupsCacheEmpty()) {
-				initList()
-				return@initInternalRepo
-			}
+		initCacheUseCase.initInternalRepo().get()
 
-			if (!mainUseCase.isNetworkAvailable()) {
-				groupsView.networkUnavailable()
-				return@initInternalRepo
-			}
-
-			initFromExternalRepo()
-		}
-	}
-
-	private fun initFromExternalRepo() {
-		if (!mainUseCase.isNetworkAvailable()) {
-			groupsView.stopRefresh()
+		if (!initCacheUseCase.isGroupsCacheEmpty()) {
+			initList()
 			return
 		}
 
-		initCacheUseCase.initGroupsFromExternalRepo {
-			initList()
-			groupsView.stopRefresh()
-		}
+		synchronizeGroups()
+	}
+
+	private fun synchronizeGroups() {
+		synchronizeGroupsUseCase.synchronizeGroups(object : SynchronizeCallback {
+			override fun onSuccess() {
+				groupsView.stopRefresh()
+				initList()
+			}
+
+			override fun onError(errorMessage: String) {
+				groupsView.stopRefresh()
+				groupsView.onError(errorMessage)
+			}
+		})
 	}
 
 	private fun initList() {
-		groupsView.setListItems(mainUseCase.getGroups(groupsView.getFilterText()))
+		groupsView.setListItems(groupsUseCase.getGroups(groupsView.getFilterText()))
 	}
 
 	override fun detachView() {}

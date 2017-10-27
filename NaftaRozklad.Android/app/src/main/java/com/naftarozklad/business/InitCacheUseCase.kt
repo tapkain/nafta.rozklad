@@ -2,7 +2,7 @@ package com.naftarozklad.business
 
 import com.naftarozklad.repo.external.WebApi
 import com.naftarozklad.repo.internal.GlobalCache
-import com.naftarozklad.utils.NetworkHelper
+import com.naftarozklad.utils.isNetworkAvailable
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import javax.inject.Inject
@@ -18,20 +18,14 @@ class InitCacheUseCase @Inject constructor(
 		private val webApi: WebApi
 ) {
 
-	fun isGroupsCacheEmpty(): Boolean {
-		return globalCache.cachedGroups.isEmpty()
-	}
+	fun isGroupsCacheEmpty() = globalCache.cachedGroups.isEmpty()
 
-	fun initInternalRepo(callback: () -> Unit) {
-		doAsync {
-			globalCache.initDatabase {
-				uiThread { callback() }
-			}
-		}
+	fun initInternalRepo() = doAsync {
+		globalCache.initDatabase()
 	}
 
 	fun initGroupsFromExternalRepo(callback: () -> Unit) {
-		if (!NetworkHelper.isNetworkAvailable())
+		if (!isNetworkAvailable())
 			return
 
 		doAsync {

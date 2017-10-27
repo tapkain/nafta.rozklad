@@ -11,7 +11,7 @@ import com.naftarozklad.repo.models.Group
 import com.naftarozklad.utils.SimpleTextWatcher
 import com.naftarozklad.views.interfaces.GroupsView
 import com.naftarozklad.views.lists.adapters.GroupsAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_groups.*
 import org.jetbrains.anko.contentView
 import javax.inject.Inject
 
@@ -26,7 +26,7 @@ class GroupsActivity : AppCompatActivity(), GroupsView {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main)
+		setContentView(R.layout.activity_groups)
 		RozkladApp.applicationComponent.inject(this)
 
 		recyclerView.layoutManager = LinearLayoutManager(this)
@@ -54,10 +54,6 @@ class GroupsActivity : AppCompatActivity(), GroupsView {
 		adapter.setGroups(groups)
 	}
 
-	override fun networkUnavailable() {
-		contentView?.let { Snackbar.make(it, "No Internet Connection", Snackbar.LENGTH_SHORT) }
-	}
-
 	override fun stopRefresh() {
 		swipeRefreshLayout.isRefreshing = false
 	}
@@ -65,4 +61,8 @@ class GroupsActivity : AppCompatActivity(), GroupsView {
 	override fun getFilterText() = etSearch.text.toString()
 
 	override fun setFilterText(filterText: String) = etSearch.setText(filterText)
+
+	override fun onError(errorMessage: String) {
+		contentView?.let { Snackbar.make(it, errorMessage, Snackbar.LENGTH_SHORT) }
+	}
 }
