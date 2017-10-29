@@ -7,6 +7,7 @@ import com.naftarozklad.utils.isNetworkAvailable
 import com.naftarozklad.utils.resolveErrorMessage
 import com.naftarozklad.utils.resolveString
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import javax.inject.Inject
 
 /**
@@ -20,7 +21,9 @@ class SynchronizeGroupsUseCase @Inject constructor(
 
 	fun synchronizeGroups(callback: SynchronizeCallback?) = doAsync {
 		if (!isNetworkAvailable()) {
-			callback?.onError(resolveString(R.string.lbl_no_network))
+			uiThread {
+				callback?.onError(resolveString(R.string.lbl_no_network))
+			}
 			return@doAsync
 		}
 
@@ -29,9 +32,13 @@ class SynchronizeGroupsUseCase @Inject constructor(
 
 			if (isSuccessful && groups != null) {
 				globalCache.insertGroups(groups.toMutableList())
-				callback?.onSuccess()
+				uiThread {
+					callback?.onSuccess()
+				}
 			} else {
-				callback?.onError(resolveErrorMessage(code()))
+				uiThread {
+					callback?.onError(resolveErrorMessage(code()))
+				}
 			}
 		}
 	}

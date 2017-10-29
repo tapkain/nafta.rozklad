@@ -16,13 +16,9 @@ class GlobalCache @Inject constructor(private var dbManager: DBManager) {
 		cachedGroups = dbManager.rozkladDatabase.groupsDAO().getGroups().toMutableList()
 	}
 
-	fun clearGroups() {
-		cachedGroups.clear()
+	fun insertGroups(groups: List<Group>) {
+		cachedGroups = groups.sortedBy { it.id }.toMutableList()
 		dbManager.rozkladDatabase.groupsDAO().clearGroups()
-	}
-
-	fun insertGroups(groups: MutableList<Group>) {
-		cachedGroups = groups
 		dbManager.rozkladDatabase.groupsDAO().insertGroups(groups)
 	}
 }

@@ -13,16 +13,19 @@ import kotlinx.android.synthetic.main.list_item_group.view.*
 /**
  * Created by bohdan on 10/7/17
  */
-class GroupsAdapter : RecyclerView.Adapter<GroupsAdapter.GroupViewModel>() {
+class GroupsAdapter : RecyclerView.Adapter<GroupsAdapter.GroupViewHolder>() {
 
 	private var groups: MutableList<Group> = ArrayList()
+	private lateinit var selectionCallback: (Int) -> Unit
 
-	override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): GroupViewModel {
-		return GroupViewModel(LayoutInflater.from(parent?.context).inflate(R.layout.list_item_group, parent, false))
+	override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): GroupViewHolder {
+		return GroupViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.list_item_group, parent, false))
 	}
 
-	override fun onBindViewHolder(holder: GroupViewModel?, position: Int) {
-		holder?.description = groups[position].name
+	override fun onBindViewHolder(holder: GroupViewHolder?, position: Int) {
+		val group = groups[position]
+		holder?.name = group.name
+		holder?.itemView?.setOnClickListener { selectionCallback(group.id) }
 	}
 
 	override fun getItemCount(): Int {
@@ -38,11 +41,12 @@ class GroupsAdapter : RecyclerView.Adapter<GroupsAdapter.GroupViewModel>() {
 		result.dispatchUpdatesTo(this)
 	}
 
-	class GroupViewModel(view: View) : RecyclerView.ViewHolder(view) {
+	fun setSelectionCallback(callback: (Int) -> Unit) {
+		selectionCallback = callback
+	}
 
-		var id: Int = 0
-
-		var description: String? = ""
+	class GroupViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+		var name: String? = ""
 			set(value) {
 				itemView.tvDescription.text = value
 			}
