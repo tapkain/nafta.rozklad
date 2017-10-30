@@ -13,7 +13,7 @@ import com.naftarozklad.repo.models.Group
 interface GroupsDAO {
 
 	@Query("SELECT * FROM groups")
-	fun getGroups(): Array<Group>
+	fun getGroups(): List<Group>
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
 	fun insertGroups(groups: List<Group>)

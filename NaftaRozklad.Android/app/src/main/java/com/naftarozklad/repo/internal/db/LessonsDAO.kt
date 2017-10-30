@@ -13,8 +13,11 @@ import com.naftarozklad.repo.models.Lesson
 interface LessonsDAO {
 
 	@Query("SELECT * FROM lessons")
-	fun getLessons():Array<Lesson>
+	fun getLessons(): List<Lesson>
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun insertLessons(lessons: Array<Lesson>)
+	fun insertLessons(lessons: List<Lesson>): List<Long>
+
+	@Query("DELETE FROM lessons")
+	fun clearLessons()
 }

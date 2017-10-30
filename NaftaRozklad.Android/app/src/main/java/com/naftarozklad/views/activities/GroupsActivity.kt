@@ -66,7 +66,7 @@ class GroupsActivity : AppCompatActivity(), GroupsView {
 	override fun setFilterText(filterText: String) = etSearch.setText(filterText)
 
 	override fun onError(errorMessage: String) {
-		contentView?.let { Snackbar.make(it, errorMessage, Snackbar.LENGTH_SHORT).show() }
+		contentView?.let { Snackbar.make(it, errorMessage, Snackbar.LENGTH_LONG).show() }
 	}
 
 	private fun openScheduleActivity(groupId: Int) {

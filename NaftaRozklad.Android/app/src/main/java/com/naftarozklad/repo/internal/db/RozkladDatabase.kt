@@ -8,7 +8,8 @@ import com.naftarozklad.repo.models.Lesson
 /**
  * Created by bohdan on 10/7/17
  */
-@Database(entities = arrayOf(Group::class, Lesson::class), version = 1, exportSchema = false)
+
+@Database(entities = arrayOf(Group::class, Lesson::class), version = 2, exportSchema = false)
 abstract class RozkladDatabase : RoomDatabase() {
 
 	companion object {

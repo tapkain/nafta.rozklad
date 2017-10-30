@@ -21,25 +21,25 @@ class SynchronizeGroupsUseCase @Inject constructor(
 
 	fun synchronizeGroups(callback: SynchronizeCallback?) = doAsync {
 		if (!isNetworkAvailable()) {
-			uiThread {
-				callback?.onError(resolveString(R.string.lbl_no_network))
-			}
+			uiThread { callback?.onError(resolveString(R.string.lbl_no_network)) }
 			return@doAsync
 		}
 
 		with(webApi.getGroups().execute()) {
 			val groups = body()
 
-			if (isSuccessful && groups != null) {
-				globalCache.insertGroups(groups.toMutableList())
-				uiThread {
-					callback?.onSuccess()
-				}
-			} else {
-				uiThread {
-					callback?.onError(resolveErrorMessage(code()))
-				}
+			if (!isSuccessful) {
+				uiThread { callback?.onError(resolveErrorMessage(code())) }
+				return@doAsync
 			}
+
+			if (groups == null || groups.isEmpty()) {
+				uiThread { callback?.onError(resolveString(R.string.lbl_no_data)) }
+				return@doAsync
+			}
+
+			globalCache.insertGroups(groups.toMutableList())
+			uiThread { callback?.onSuccess() }
 		}
 	}
 }

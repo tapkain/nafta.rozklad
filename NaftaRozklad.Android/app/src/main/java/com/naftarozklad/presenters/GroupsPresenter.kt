@@ -26,13 +26,15 @@ class GroupsPresenter @Inject constructor(
 
 		initCacheUseCase.initInternalRepo().get()
 
-		if (!initCacheUseCase.isGroupsCacheEmpty()) {
+		if (!initCacheUseCase.isCacheInitialized()) {
 			initList()
 			return
 		}
 
 		synchronizeGroups()
 	}
+
+	override fun detachView() {}
 
 	private fun synchronizeGroups() {
 		synchronizeGroupsUseCase.synchronizeGroups(object : SynchronizeCallback {
@@ -51,6 +53,4 @@ class GroupsPresenter @Inject constructor(
 	private fun initList() {
 		groupsView.setListItems(groupsUseCase.getGroups(groupsView.getFilterText()))
 	}
-
-	override fun detachView() {}
 }
