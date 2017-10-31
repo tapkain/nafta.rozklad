@@ -26,7 +26,7 @@ class GroupsPresenter @Inject constructor(
 
 		initCacheUseCase.initInternalRepo().get()
 
-		if (!initCacheUseCase.isCacheInitialized()) {
+		if (initCacheUseCase.isGroupsExist()) {
 			initList()
 			return
 		}
@@ -50,7 +50,7 @@ class GroupsPresenter @Inject constructor(
 		})
 	}
 
-	private fun initList() {
-		groupsView.setListItems(groupsUseCase.getGroups(groupsView.getFilterText()))
+	private fun initList() = with(groupsView) {
+		setListItems(groupsUseCase.getGroups(getFilterText()))
 	}
 }

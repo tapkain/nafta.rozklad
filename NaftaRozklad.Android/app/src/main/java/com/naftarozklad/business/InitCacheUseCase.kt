@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class InitCacheUseCase @Inject constructor(private val globalCache: GlobalCache) {
 
-	fun isCacheInitialized() = globalCache.cachedGroups.isEmpty()
+	fun isGroupsExist() = !globalCache.cachedGroups.isEmpty()
 
 	fun initInternalRepo() = doAsync {
 		globalCache.initDatabase()

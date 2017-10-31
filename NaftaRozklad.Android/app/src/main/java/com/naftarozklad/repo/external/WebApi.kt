@@ -1,7 +1,7 @@
 package com.naftarozklad.repo.external
 
+import com.naftarozklad.repo.models.DayDTO
 import com.naftarozklad.repo.models.Group
-import com.naftarozklad.repo.models.Lesson
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,5 +15,5 @@ interface WebApi {
 	fun getGroups(): Call<List<Group>>
 
 	@GET("api/schedules.php")
-	fun getSchedule(@Query("group_id") groupId: Int, @Query("week") week: Int = 0, @Query("subgroup") subgroup: Int = 0): Call<List<Lesson>>
+	fun getSchedule(@Query("group_id") groupId: Int, @Query("week") week: Int = 0, @Query("subgroup") subgroup: Int = 0): Call<List<DayDTO>>
 }
