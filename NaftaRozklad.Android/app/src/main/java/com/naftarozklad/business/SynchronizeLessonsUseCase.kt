@@ -30,7 +30,7 @@ class SynchronizeLessonsUseCase @Inject constructor(
 		// BS: University's web api was RAPED! to show correct data on http://rozklad.nung.edu.ua/
 		// BS: Probably it would be better to provide correct data from web api and adjust data on client side, wouldn't it?!?!
 		// BS: Workaround - used HashSet to avoid duplicates
-		// BS: SUGGESTION for web api developers: provide possibility
+		// BS: SUGGESTION for web api developers: provide possibility to fetch all data with one query!
 		// region Workaround
 		val lessons = HashSet<Lesson>()
 

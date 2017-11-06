@@ -31,7 +31,7 @@ class GlobalCache @Inject constructor(private val dbManager: DBManager) {
 	fun insertLessons(lessons: List<Lesson>) {
 		cachedLessons = lessons.toMutableList()
 		lessonsDAO().clearLessons()
-		lessonsDAO().insertLessons(cachedLessons).forEachWithIndex { index: Int, id: Long -> cachedGroups[index].id = id.toInt() }
+		lessonsDAO().insertLessons(cachedLessons).forEachWithIndex { index: Int, id: Long -> cachedLessons[index].id = id.toInt() }
 	}
 
 	private fun GlobalCache.groupsDAO(): GroupsDAO = dbManager.rozkladDatabase.groupsDAO()
