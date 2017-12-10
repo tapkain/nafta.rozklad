@@ -9,15 +9,15 @@
 import RealmSwift
 
 class Lesson: Object, Codable {
-  var id = 0
-  var group: Group!
-  var period = 0
+  @objc dynamic var id = 0
+  @objc dynamic var group: Group!
+  @objc dynamic var period = 0
   
   var day = Day.monday
   var week = Week.common
   var subgroup = Subgroup.common
   
-  var type = ""
-  var name = ""
-  var teacher = ""
+  @objc dynamic var type = ""
+  @objc dynamic var name = ""
+  @objc dynamic var teacher = ""
 }

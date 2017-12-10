@@ -3,26 +3,43 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - PromiseKit (4.4.3):
+    - PromiseKit/Foundation (= 4.4.3)
+    - PromiseKit/QuartzCore (= 4.4.3)
+    - PromiseKit/UIKit (= 4.4.3)
+  - PromiseKit/Alamofire (4.4.3):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (4.4.3)
+  - PromiseKit/Foundation (4.4.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.4.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.4.3):
+    - PromiseKit/CorePromise
   - Realm (2.10.1):
     - Realm/Headers (= 2.10.1)
   - Realm/Headers (2.10.1)
   - RealmSwift (2.10.1):
     - Realm (= 2.10.1)
-  - SwiftyJSON (3.1.4)
+  - SwiftDate (4.4.2)
 
 DEPENDENCIES:
   - Alamofire
   - ChameleonFramework/Swift
+  - PromiseKit
+  - PromiseKit/Alamofire
   - RealmSwift
-  - SwiftyJSON
+  - SwiftDate
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  PromiseKit: fbb52a0d154402c57eeb6eccd36dd7724fcf6117
   Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
   RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftDate: 131cf2f09b390f0a07f0099e36005ffe2fbf4c7e
 
-PODFILE CHECKSUM: 78fc314d4f6f5e675684dbf52a739eb8a6bc16f4
+PODFILE CHECKSUM: ab8bbe9c6087face46dc504ed02b94df78a7818c
 
 COCOAPODS: 1.3.1

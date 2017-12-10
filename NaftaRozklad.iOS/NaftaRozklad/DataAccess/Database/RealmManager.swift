@@ -12,10 +12,14 @@ class RealmManager {
   static let sharedInstance = RealmManager()
   
   func insert<Model: Object>(_ model: Model) throws {
+    try insert([model])
+  }
+  
+  func insert<Model: Object>(_ models: [Model]) throws {
     let realm = try Realm()
     
     try realm.write {
-      realm.add(model)
+      realm.add(models)
     }
   }
   

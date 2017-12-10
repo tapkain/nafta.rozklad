@@ -12,4 +12,6 @@ enum Day: Int, Codable {
   case wednesday = 3
   case thursday = 4
   case friday = 5
+  case saturday = 6
+  case sunday = 7
 }

@@ -36,7 +36,7 @@ class WebApi {
     }
   }
   
-  class func isConnectedToInternet() -> Bool {
+  func isConnectedToInternet() -> Bool {
     return NetworkReachabilityManager()!.isReachable
   }
 }

@@ -9,8 +9,15 @@
 import RealmSwift
 
 class Group: Object, Codable {
-  var id = 0
-  var name = ""
-  var faculty = ""
-  var hasSubgroups = false
+  @objc dynamic var id = ""
+  @objc dynamic var faculty = ""
+  @objc dynamic var name = ""
+  @objc dynamic var hasSubgroups = false
+  
+  enum CodingKeys: String, CodingKey {
+    case id
+    case name
+    case faculty
+    case hasSubgroups = "has_subgroups"
+  }
 }

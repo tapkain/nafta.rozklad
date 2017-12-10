@@ -11,11 +11,10 @@ import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  var window: UIWindow?
-
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    Chameleon.setGlobalThemeUsingPrimaryColor(UIColor.flatWatermelonColorDark(), with: .dark)
-    return true
-  }
+    var window: UIWindow?
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        return true
+    }
 }
 

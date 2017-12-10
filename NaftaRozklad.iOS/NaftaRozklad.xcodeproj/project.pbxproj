@@ -7,33 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7944EFB31FDD8F45008150F7 /* GroupSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFB11FDD8F45008150F7 /* GroupSelectionCell.swift */; };
+		7944EFB41FDD8F45008150F7 /* GroupSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFB21FDD8F45008150F7 /* GroupSelectionScene.swift */; };
+		7944EFBE1FDD8F98008150F7 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFB71FDD8F98008150F7 /* Day.swift */; };
+		7944EFBF1FDD8F98008150F7 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFB81FDD8F98008150F7 /* Week.swift */; };
+		7944EFC01FDD8F98008150F7 /* LessonDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFB91FDD8F98008150F7 /* LessonDto.swift */; };
+		7944EFC11FDD8F98008150F7 /* DayDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFBA1FDD8F98008150F7 /* DayDto.swift */; };
+		7944EFC21FDD8F98008150F7 /* Subgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFBB1FDD8F98008150F7 /* Subgroup.swift */; };
+		7944EFC31FDD8F98008150F7 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFBC1FDD8F98008150F7 /* Group.swift */; };
+		7944EFC41FDD8F98008150F7 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFBD1FDD8F98008150F7 /* Lesson.swift */; };
+		7944EFC71FDD8FB7008150F7 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFC61FDD8FB7008150F7 /* RealmManager.swift */; };
+		7944EFCB1FDD8FD5008150F7 /* WebApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFC91FDD8FD5008150F7 /* WebApi.swift */; };
+		7944EFCC1FDD8FD5008150F7 /* WebApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFCA1FDD8FD5008150F7 /* WebApiError.swift */; };
+		7944EFCF1FDD907B008150F7 /* GroupLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFCE1FDD907B008150F7 /* GroupLogic.swift */; };
+		7944EFD11FDD9183008150F7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFD01FDD9183008150F7 /* Preferences.swift */; };
+		797193801FDDAE0600F3B3C2 /* LessonsListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */; };
+		797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193811FDDAE4000F3B3C2 /* LessonLogic.swift */; };
+		797193851FDDBBF400F3B3C2 /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193841FDDBBF400F3B3C2 /* RoundLabel.swift */; };
+		797193871FDDCBA300F3B3C2 /* TopCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193861FDDCBA300F3B3C2 /* TopCalendarCell.swift */; };
+		797193891FDDCF9A00F3B3C2 /* TopCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193881FDDCF9A00F3B3C2 /* TopCalendarView.swift */; };
+		7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938D1FDDD75500F3B3C2 /* Formatter.swift */; };
+		797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */; };
 		79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C19A1F851267001A9FB3 /* AppDelegate.swift */; };
-		79B3C19D1F851267001A9FB3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C19C1F851267001A9FB3 /* LoginViewController.swift */; };
 		79B3C1A01F851267001A9FB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C19E1F851267001A9FB3 /* Main.storyboard */; };
 		79B3C1A21F851267001A9FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A11F851267001A9FB3 /* Assets.xcassets */; };
 		79B3C1A51F851267001A9FB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A31F851267001A9FB3 /* LaunchScreen.storyboard */; };
-		79B3C1AE1F851645001A9FB3 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */; };
-		79E7D8431F89148200972401 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D8421F89148200972401 /* LessonViewController.swift */; };
-		79E7D8451F8915D400972401 /* LessonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D8441F8915D400972401 /* LessonTableViewCell.swift */; };
-		79EC9CA31F851B6700E0F925 /* UniversityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC9CA21F851B6700E0F925 /* UniversityGroup.swift */; };
-		79EC9CA61F8744D300E0F925 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC9CA51F8744D300E0F925 /* ApiManager.swift */; };
 		D79FF514D2A9F9E77C6CB961 /* Pods_NaftaRozklad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		21B1808456216D725AD7F549 /* Pods-NaftaRozklad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaftaRozklad.release.xcconfig"; path = "Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad.release.xcconfig"; sourceTree = "<group>"; };
+		7944EFB11FDD8F45008150F7 /* GroupSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSelectionCell.swift; sourceTree = "<group>"; };
+		7944EFB21FDD8F45008150F7 /* GroupSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSelectionScene.swift; sourceTree = "<group>"; };
+		7944EFB71FDD8F98008150F7 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		7944EFB81FDD8F98008150F7 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		7944EFB91FDD8F98008150F7 /* LessonDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDto.swift; sourceTree = "<group>"; };
+		7944EFBA1FDD8F98008150F7 /* DayDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayDto.swift; sourceTree = "<group>"; };
+		7944EFBB1FDD8F98008150F7 /* Subgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subgroup.swift; sourceTree = "<group>"; };
+		7944EFBC1FDD8F98008150F7 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		7944EFBD1FDD8F98008150F7 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		7944EFC61FDD8FB7008150F7 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		7944EFC91FDD8FD5008150F7 /* WebApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApi.swift; sourceTree = "<group>"; };
+		7944EFCA1FDD8FD5008150F7 /* WebApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApiError.swift; sourceTree = "<group>"; };
+		7944EFCE1FDD907B008150F7 /* GroupLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLogic.swift; sourceTree = "<group>"; };
+		7944EFD01FDD9183008150F7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListScene.swift; sourceTree = "<group>"; };
+		797193811FDDAE4000F3B3C2 /* LessonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogic.swift; sourceTree = "<group>"; };
+		797193841FDDBBF400F3B3C2 /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
+		797193861FDDCBA300F3B3C2 /* TopCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCalendarCell.swift; sourceTree = "<group>"; };
+		797193881FDDCF9A00F3B3C2 /* TopCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCalendarView.swift; sourceTree = "<group>"; };
+		7971938D1FDDD75500F3B3C2 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPlus.swift; sourceTree = "<group>"; };
 		79B3C1971F851267001A9FB3 /* NaftaRozklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaftaRozklad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B3C19A1F851267001A9FB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		79B3C19C1F851267001A9FB3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		79B3C19F1F851267001A9FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		79B3C1A11F851267001A9FB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79B3C1A41F851267001A9FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79B3C1A61F851267001A9FB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
-		79E7D8421F89148200972401 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
-		79E7D8441F8915D400972401 /* LessonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTableViewCell.swift; sourceTree = "<group>"; };
-		79EC9CA21F851B6700E0F925 /* UniversityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityGroup.swift; sourceTree = "<group>"; };
-		79EC9CA51F8744D300E0F925 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		AC125A4F4EADF6145456110C /* Pods_NaftaRozklad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaftaRozklad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE041573348E51335144C60D /* Pods-NaftaRozklad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaftaRozklad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +97,95 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7944EFAF1FDD8EA8008150F7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7971937E1FDDAD6700F3B3C2 /* LessonsListScene */,
+				7944EFB01FDD8F15008150F7 /* GroupSelectionScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7944EFB01FDD8F15008150F7 /* GroupSelectionScene */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFB11FDD8F45008150F7 /* GroupSelectionCell.swift */,
+				7944EFB21FDD8F45008150F7 /* GroupSelectionScene.swift */,
+			);
+			path = GroupSelectionScene;
+			sourceTree = "<group>";
+		};
+		7944EFB51FDD8F61008150F7 /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFC81FDD8FBC008150F7 /* WebApi */,
+				7944EFC51FDD8FA2008150F7 /* Database */,
+				7944EFB61FDD8F82008150F7 /* Models */,
+			);
+			path = DataAccess;
+			sourceTree = "<group>";
+		};
+		7944EFB61FDD8F82008150F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFB71FDD8F98008150F7 /* Day.swift */,
+				7944EFBA1FDD8F98008150F7 /* DayDto.swift */,
+				7944EFBC1FDD8F98008150F7 /* Group.swift */,
+				7944EFBD1FDD8F98008150F7 /* Lesson.swift */,
+				7944EFB91FDD8F98008150F7 /* LessonDto.swift */,
+				7944EFBB1FDD8F98008150F7 /* Subgroup.swift */,
+				7944EFB81FDD8F98008150F7 /* Week.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7944EFC51FDD8FA2008150F7 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFC61FDD8FB7008150F7 /* RealmManager.swift */,
+				7944EFD01FDD9183008150F7 /* Preferences.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		7944EFC81FDD8FBC008150F7 /* WebApi */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFC91FDD8FD5008150F7 /* WebApi.swift */,
+				7944EFCA1FDD8FD5008150F7 /* WebApiError.swift */,
+			);
+			path = WebApi;
+			sourceTree = "<group>";
+		};
+		7944EFCD1FDD9055008150F7 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFCE1FDD907B008150F7 /* GroupLogic.swift */,
+				797193811FDDAE4000F3B3C2 /* LessonLogic.swift */,
+				7971938D1FDDD75500F3B3C2 /* Formatter.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		7971937E1FDDAD6700F3B3C2 /* LessonsListScene */ = {
+			isa = PBXGroup;
+			children = (
+				7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */,
+				797193861FDDCBA300F3B3C2 /* TopCalendarCell.swift */,
+				797193881FDDCF9A00F3B3C2 /* TopCalendarView.swift */,
+			);
+			path = LessonsListScene;
+			sourceTree = "<group>";
+		};
+		797193831FDDBBDD00F3B3C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				797193841FDDBBF400F3B3C2 /* RoundLabel.swift */,
+				7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		79B3C18E1F851267001A9FB3 = {
 			isa = PBXGroup;
 			children = (
@@ -88,9 +207,10 @@
 		79B3C1991F851267001A9FB3 /* NaftaRozklad */ = {
 			isa = PBXGroup;
 			children = (
-				79E7D8411F89141B00972401 /* LessonScene */,
-				79EC9CA41F8744BD00E0F925 /* WebApi */,
-				79B3C1AC1F85140B001A9FB3 /* LoginScene */,
+				797193831FDDBBDD00F3B3C2 /* Views */,
+				7944EFCD1FDD9055008150F7 /* Business */,
+				7944EFB51FDD8F61008150F7 /* DataAccess */,
+				7944EFAF1FDD8EA8008150F7 /* Scenes */,
 				79B3C19A1F851267001A9FB3 /* AppDelegate.swift */,
 				79B3C19E1F851267001A9FB3 /* Main.storyboard */,
 				79B3C1A11F851267001A9FB3 /* Assets.xcassets */,
@@ -98,33 +218,6 @@
 				79B3C1A61F851267001A9FB3 /* Info.plist */,
 			);
 			path = NaftaRozklad;
-			sourceTree = "<group>";
-		};
-		79B3C1AC1F85140B001A9FB3 /* LoginScene */ = {
-			isa = PBXGroup;
-			children = (
-				79B3C19C1F851267001A9FB3 /* LoginViewController.swift */,
-				79B3C1AD1F851645001A9FB3 /* LoginTableViewCell.swift */,
-				79EC9CA21F851B6700E0F925 /* UniversityGroup.swift */,
-			);
-			path = LoginScene;
-			sourceTree = "<group>";
-		};
-		79E7D8411F89141B00972401 /* LessonScene */ = {
-			isa = PBXGroup;
-			children = (
-				79E7D8421F89148200972401 /* LessonViewController.swift */,
-				79E7D8441F8915D400972401 /* LessonTableViewCell.swift */,
-			);
-			path = LessonScene;
-			sourceTree = "<group>";
-		};
-		79EC9CA41F8744BD00E0F925 /* WebApi */ = {
-			isa = PBXGroup;
-			children = (
-				79EC9CA51F8744D300E0F925 /* ApiManager.swift */,
-			);
-			path = WebApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,17 +315,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -264,13 +359,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79B3C19D1F851267001A9FB3 /* LoginViewController.swift in Sources */,
+				7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */,
+				7944EFCF1FDD907B008150F7 /* GroupLogic.swift in Sources */,
+				797193851FDDBBF400F3B3C2 /* RoundLabel.swift in Sources */,
+				7944EFC31FDD8F98008150F7 /* Group.swift in Sources */,
+				797193801FDDAE0600F3B3C2 /* LessonsListScene.swift in Sources */,
+				797193891FDDCF9A00F3B3C2 /* TopCalendarView.swift in Sources */,
+				797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */,
+				7944EFD11FDD9183008150F7 /* Preferences.swift in Sources */,
+				7944EFC21FDD8F98008150F7 /* Subgroup.swift in Sources */,
+				7944EFBE1FDD8F98008150F7 /* Day.swift in Sources */,
 				79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */,
-				79EC9CA61F8744D300E0F925 /* ApiManager.swift in Sources */,
-				79B3C1AE1F851645001A9FB3 /* LoginTableViewCell.swift in Sources */,
-				79E7D8431F89148200972401 /* LessonViewController.swift in Sources */,
-				79E7D8451F8915D400972401 /* LessonTableViewCell.swift in Sources */,
-				79EC9CA31F851B6700E0F925 /* UniversityGroup.swift in Sources */,
+				797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */,
+				7944EFCB1FDD8FD5008150F7 /* WebApi.swift in Sources */,
+				7944EFC11FDD8F98008150F7 /* DayDto.swift in Sources */,
+				7944EFC71FDD8FB7008150F7 /* RealmManager.swift in Sources */,
+				7944EFB31FDD8F45008150F7 /* GroupSelectionCell.swift in Sources */,
+				7944EFBF1FDD8F98008150F7 /* Week.swift in Sources */,
+				7944EFCC1FDD8FD5008150F7 /* WebApiError.swift in Sources */,
+				797193871FDDCBA300F3B3C2 /* TopCalendarCell.swift in Sources */,
+				7944EFC01FDD8F98008150F7 /* LessonDto.swift in Sources */,
+				7944EFB41FDD8F45008150F7 /* GroupSelectionScene.swift in Sources */,
+				7944EFC41FDD8F98008150F7 /* Lesson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
