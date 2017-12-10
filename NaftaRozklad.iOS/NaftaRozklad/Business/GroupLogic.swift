@@ -10,6 +10,5 @@ import PromiseKit
 
 class GroupLogic {
   func initData() -> Promise<[Group]> {
-    
   }
 }
