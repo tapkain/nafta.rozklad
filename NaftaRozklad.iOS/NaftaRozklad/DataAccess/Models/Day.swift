@@ -1,13 +1,15 @@
 //
-//  Lesson.swift
+//  Day.swift
 //  NaftaRozklad
 //
 //  Created by Yevhen Velizhenkov on 12/10/17.
 //  Copyright © 2017 Yevhen Velizhenkov. All rights reserved.
 //
 
-import UIKit
-
-class Lesson: Object {
-
+enum Day: Int, Codable {
+  case monday = 1
+  case tuesday = 2
+  case wednesday = 3
+  case thursday = 4
+  case friday = 5
 }

@@ -1,13 +1,15 @@
 //
-//  Subgroup.swift
+//  GroupLogic.swift
 //  NaftaRozklad
 //
 //  Created by Yevhen Velizhenkov on 12/10/17.
 //  Copyright © 2017 Yevhen Velizhenkov. All rights reserved.
 //
 
-import UIKit
+import PromiseKit
 
-class Subgroup: Object {
-
+class GroupLogic {
+  func initData() -> Promise<[Group]> {
+    
+  }
 }
