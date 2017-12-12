@@ -23,11 +23,10 @@
 		7944EFD11FDD9183008150F7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFD01FDD9183008150F7 /* Preferences.swift */; };
 		797193801FDDAE0600F3B3C2 /* LessonsListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */; };
 		797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193811FDDAE4000F3B3C2 /* LessonLogic.swift */; };
-		797193851FDDBBF400F3B3C2 /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193841FDDBBF400F3B3C2 /* RoundLabel.swift */; };
-		797193871FDDCBA300F3B3C2 /* TopCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193861FDDCBA300F3B3C2 /* TopCalendarCell.swift */; };
-		797193891FDDCF9A00F3B3C2 /* TopCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193881FDDCF9A00F3B3C2 /* TopCalendarView.swift */; };
 		7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938D1FDDD75500F3B3C2 /* Formatter.swift */; };
 		797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */; };
+		797193941FDFC76500F3B3C2 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193931FDFC76500F3B3C2 /* ScheduleCell.swift */; };
+		797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193961FE04FEE00F3B3C2 /* ScheduleView.swift */; };
 		79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C19A1F851267001A9FB3 /* AppDelegate.swift */; };
 		79B3C1A01F851267001A9FB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C19E1F851267001A9FB3 /* Main.storyboard */; };
 		79B3C1A21F851267001A9FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A11F851267001A9FB3 /* Assets.xcassets */; };
@@ -53,11 +52,10 @@
 		7944EFD01FDD9183008150F7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListScene.swift; sourceTree = "<group>"; };
 		797193811FDDAE4000F3B3C2 /* LessonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogic.swift; sourceTree = "<group>"; };
-		797193841FDDBBF400F3B3C2 /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
-		797193861FDDCBA300F3B3C2 /* TopCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCalendarCell.swift; sourceTree = "<group>"; };
-		797193881FDDCF9A00F3B3C2 /* TopCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCalendarView.swift; sourceTree = "<group>"; };
 		7971938D1FDDD75500F3B3C2 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPlus.swift; sourceTree = "<group>"; };
+		797193931FDFC76500F3B3C2 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		797193961FE04FEE00F3B3C2 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		79B3C1971F851267001A9FB3 /* NaftaRozklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaftaRozklad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B3C19A1F851267001A9FB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79B3C19F1F851267001A9FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,8 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */,
-				797193861FDDCBA300F3B3C2 /* TopCalendarCell.swift */,
-				797193881FDDCF9A00F3B3C2 /* TopCalendarView.swift */,
+				797193931FDFC76500F3B3C2 /* ScheduleCell.swift */,
 			);
 			path = LessonsListScene;
 			sourceTree = "<group>";
@@ -180,10 +177,18 @@
 		797193831FDDBBDD00F3B3C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				797193841FDDBBF400F3B3C2 /* RoundLabel.swift */,
+				797193951FE04FC100F3B3C2 /* ScheduleView */,
 				7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		797193951FE04FC100F3B3C2 /* ScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				797193961FE04FEE00F3B3C2 /* ScheduleView.swift */,
+			);
+			path = ScheduleView;
 			sourceTree = "<group>";
 		};
 		79B3C18E1F851267001A9FB3 = {
@@ -361,13 +366,13 @@
 			files = (
 				7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */,
 				7944EFCF1FDD907B008150F7 /* GroupLogic.swift in Sources */,
-				797193851FDDBBF400F3B3C2 /* RoundLabel.swift in Sources */,
+				797193941FDFC76500F3B3C2 /* ScheduleCell.swift in Sources */,
 				7944EFC31FDD8F98008150F7 /* Group.swift in Sources */,
 				797193801FDDAE0600F3B3C2 /* LessonsListScene.swift in Sources */,
-				797193891FDDCF9A00F3B3C2 /* TopCalendarView.swift in Sources */,
 				797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */,
 				7944EFD11FDD9183008150F7 /* Preferences.swift in Sources */,
 				7944EFC21FDD8F98008150F7 /* Subgroup.swift in Sources */,
+				797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */,
 				7944EFBE1FDD8F98008150F7 /* Day.swift in Sources */,
 				79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */,
 				797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */,
@@ -377,7 +382,6 @@
 				7944EFB31FDD8F45008150F7 /* GroupSelectionCell.swift in Sources */,
 				7944EFBF1FDD8F98008150F7 /* Week.swift in Sources */,
 				7944EFCC1FDD8FD5008150F7 /* WebApiError.swift in Sources */,
-				797193871FDDCBA300F3B3C2 /* TopCalendarCell.swift in Sources */,
 				7944EFC01FDD8F98008150F7 /* LessonDto.swift in Sources */,
 				7944EFB41FDD8F45008150F7 /* GroupSelectionScene.swift in Sources */,
 				7944EFC41FDD8F98008150F7 /* Lesson.swift in Sources */,

@@ -14,4 +14,11 @@ class Formatter {
     formatter.dateFormat = "dd"
     return formatter
   }()
+  
+  static let timeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.timeStyle = .short
+    formatter.timeZone = TimeZone.current
+    return formatter
+  }()
 }

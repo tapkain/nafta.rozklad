@@ -5,4 +5,5 @@ pod 'Alamofire'
 pod 'PromiseKit'
 pod 'PromiseKit/Alamofire'
 pod 'ChameleonFramework/Swift'
+pod 'SwiftDate'
 end

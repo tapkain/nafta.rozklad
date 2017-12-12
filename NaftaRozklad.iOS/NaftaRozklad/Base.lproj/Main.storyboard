@@ -16,7 +16,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IFL-sZ-xXh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.81952792406082153" green="0.37474411725997925" blue="0.27280586957931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupSelectionCell" textLabel="jon-B5-gtJ" style="IBUITableViewCellStyleDefault" id="4yt-u2-ioH" customClass="GroupSelectionCell" customModule="NaftaRozklad" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -28,13 +28,13 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jon-B5-gtJ">
                                             <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.81952792406082153" green="0.37474411725997925" blue="0.27280586957931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="groupName" destination="jon-B5-gtJ" id="IaE-dF-RxX"/>
                                 </connections>
@@ -314,14 +314,24 @@
                                             <constraint firstAttribute="height" constant="60" id="MLh-IU-0Xg"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hao-4g-z3m">
+                                        <rect key="frame" x="330" y="30" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="7Yb-Mz-hgP"/>
+                                            <constraint firstAttribute="width" constant="25" id="R85-3a-G9c"/>
+                                        </constraints>
+                                        <state key="normal" image="FilterIcon"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.81952792406082153" green="0.37474411725997925" blue="0.27280586957931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="P0a-vv-xiO" firstAttribute="centerX" secondItem="49y-su-oUR" secondAttribute="centerX" id="84L-Bc-Fk5"/>
+                                    <constraint firstAttribute="trailing" secondItem="hao-4g-z3m" secondAttribute="trailing" constant="20" id="Bgh-pW-0gY"/>
                                     <constraint firstAttribute="bottom" secondItem="jvX-Xa-AMd" secondAttribute="bottom" id="KYb-Di-9mU"/>
                                     <constraint firstAttribute="trailing" secondItem="oZH-HD-dBl" secondAttribute="trailing" constant="20" id="Ljn-uh-EJS"/>
                                     <constraint firstItem="jvX-Xa-AMd" firstAttribute="leading" secondItem="49y-su-oUR" secondAttribute="leading" id="RU6-NG-B3L"/>
                                     <constraint firstItem="4xN-cK-oIg" firstAttribute="leading" secondItem="49y-su-oUR" secondAttribute="leading" constant="20" id="ZIC-wn-fLZ"/>
+                                    <constraint firstItem="hao-4g-z3m" firstAttribute="top" secondItem="P0a-vv-xiO" secondAttribute="top" id="ah2-I0-xsN"/>
                                     <constraint firstItem="oZH-HD-dBl" firstAttribute="leading" secondItem="49y-su-oUR" secondAttribute="leading" constant="20" id="bqo-vv-ou5"/>
                                     <constraint firstAttribute="trailing" secondItem="jvX-Xa-AMd" secondAttribute="trailing" id="e8e-gv-fmW"/>
                                     <constraint firstItem="P0a-vv-xiO" firstAttribute="top" secondItem="49y-su-oUR" secondAttribute="top" constant="30" id="eh3-f0-lKk"/>
@@ -331,12 +341,19 @@
                                     <constraint firstItem="jvX-Xa-AMd" firstAttribute="top" secondItem="oZH-HD-dBl" secondAttribute="bottom" id="wn4-xS-vmC"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnC-wC-YhN" customClass="ScheduleView" customModule="NaftaRozklad" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="170" width="375" height="448"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="49y-su-oUR" firstAttribute="top" secondItem="bAU-3O-dZv" secondAttribute="top" id="8ar-Hp-RK8"/>
                             <constraint firstItem="49y-su-oUR" firstAttribute="leading" secondItem="O4B-BL-Zf1" secondAttribute="leading" id="aHC-Ux-HG4"/>
+                            <constraint firstItem="O4B-BL-Zf1" firstAttribute="bottom" secondItem="PnC-wC-YhN" secondAttribute="bottom" id="aLg-h4-XSt"/>
+                            <constraint firstItem="PnC-wC-YhN" firstAttribute="leading" secondItem="O4B-BL-Zf1" secondAttribute="leading" id="chs-aF-VKp"/>
                             <constraint firstItem="49y-su-oUR" firstAttribute="trailing" secondItem="O4B-BL-Zf1" secondAttribute="trailing" id="gkk-Sy-bCa"/>
+                            <constraint firstItem="PnC-wC-YhN" firstAttribute="top" secondItem="49y-su-oUR" secondAttribute="bottom" id="mgZ-vX-C7r"/>
+                            <constraint firstItem="O4B-BL-Zf1" firstAttribute="trailing" secondItem="PnC-wC-YhN" secondAttribute="trailing" id="ux5-gc-lXT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O4B-BL-Zf1"/>
                     </view>
@@ -357,6 +374,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FilterIcon" width="86" height="86"/>
         <image name="GroupsIcon" width="25" height="25"/>
         <image name="LessonsIcon" width="20" height="25"/>
     </resources>
