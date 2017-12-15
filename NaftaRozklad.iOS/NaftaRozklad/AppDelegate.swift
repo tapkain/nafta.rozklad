@@ -8,13 +8,16 @@
 
 import UIKit
 import ChameleonFramework
+import SwiftDate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        return true
-    }
+  var window: UIWindow?
+  
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    let ukraineRegion = Region(tz: TimeZoneName.europeKiev, cal: CalendarName.gregorian, loc: LocaleName.ukrainianUkraine)
+    Date.setDefaultRegion(ukraineRegion)
+    return true
+  }
 }
 

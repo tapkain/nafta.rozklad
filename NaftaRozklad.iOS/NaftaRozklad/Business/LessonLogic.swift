@@ -7,19 +7,19 @@
 //
 
 import PromiseKit
+import SwiftDate
 
 class LessonLogic {
   static let sharedInstance = LessonLogic()
   
-  func initTopCalendarData(for date: Date) -> [String] {
-    let calendar = Calendar.current
-    var models = [String]()
+  func initTopCalendarData(for date: Date) -> [Int] {
+    var models = [Int]()
+    let start = -(date.weekday - 1)
+    let end = 7 - date.weekday
     
-    for dayOffset in -3...3 {
-      if let date = calendar.date(byAdding: .day, value: dayOffset, to: date) {
-        let day = Formatter.dayFormatter.string(from: date)
-        models.append(day)
-      }
+    for dayOffset in start...end {
+      let offsetDate = date + dayOffset.day + 1.day
+      models.append(offsetDate.day)
     }
     
     return models

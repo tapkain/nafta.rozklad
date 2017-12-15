@@ -25,7 +25,6 @@
 		797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193811FDDAE4000F3B3C2 /* LessonLogic.swift */; };
 		7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938D1FDDD75500F3B3C2 /* Formatter.swift */; };
 		797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */; };
-		797193941FDFC76500F3B3C2 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193931FDFC76500F3B3C2 /* ScheduleCell.swift */; };
 		797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193961FE04FEE00F3B3C2 /* ScheduleView.swift */; };
 		79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C19A1F851267001A9FB3 /* AppDelegate.swift */; };
 		79B3C1A01F851267001A9FB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C19E1F851267001A9FB3 /* Main.storyboard */; };
@@ -54,7 +53,6 @@
 		797193811FDDAE4000F3B3C2 /* LessonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogic.swift; sourceTree = "<group>"; };
 		7971938D1FDDD75500F3B3C2 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPlus.swift; sourceTree = "<group>"; };
-		797193931FDFC76500F3B3C2 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		797193961FE04FEE00F3B3C2 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		79B3C1971F851267001A9FB3 /* NaftaRozklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaftaRozklad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B3C19A1F851267001A9FB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */,
-				797193931FDFC76500F3B3C2 /* ScheduleCell.swift */,
 			);
 			path = LessonsListScene;
 			sourceTree = "<group>";
@@ -366,7 +363,6 @@
 			files = (
 				7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */,
 				7944EFCF1FDD907B008150F7 /* GroupLogic.swift in Sources */,
-				797193941FDFC76500F3B3C2 /* ScheduleCell.swift in Sources */,
 				7944EFC31FDD8F98008150F7 /* Group.swift in Sources */,
 				797193801FDDAE0600F3B3C2 /* LessonsListScene.swift in Sources */,
 				797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */,

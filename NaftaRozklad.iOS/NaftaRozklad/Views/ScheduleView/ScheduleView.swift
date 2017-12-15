@@ -10,21 +10,26 @@ import UIKit
 import SwiftDate
 
 struct ScheduleEvent {
-  var startTime: Date
+  var startDate: Date
   var endDate: Date
 }
 
-//protocol ScheduleDataSource {
-//  <#requirements#>
-//}
+protocol ScheduleViewDataSource {
+  func scheduleViewGenerateEvents(_ scheduleView: ScheduleView) -> [ScheduleEvent]
+}
 
 @IBDesignable
 class ScheduleView: UIScrollView {
   let timeFrameViewHeight: CGFloat = 60
   let padding: CGFloat = 20
   let circleRadius: CGFloat = 7
+  let eventViewTag = 19
+  
   var containerView: UIView!
   var currentTimePointerView: UIView!
+  var currentTimePointerViewTopConstraint: NSLayoutConstraint!
+  
+  var dataSource: ScheduleViewDataSource!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -55,7 +60,7 @@ class ScheduleView: UIScrollView {
     containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     containerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
     containerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-    containerView.heightAnchor.constraint(equalToConstant: timeFrameViewHeight * 24).isActive = true
+    containerView.heightAnchor.constraint(equalToConstant: timeFrameViewHeight * 25).isActive = true
     containerView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
   }
   
@@ -142,22 +147,62 @@ class ScheduleView: UIScrollView {
     separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     separatorView.trailingAnchor.constraint(equalTo: currentTimePointerView.trailingAnchor).isActive = true
     separatorView.bottomAnchor.constraint(equalTo: currentTimePointerView.bottomAnchor, constant: -(circleRadius / 2)).isActive = true
+    currentTimePointerViewTopConstraint = currentTimePointerView.topAnchor.constraint(equalTo: containerView.topAnchor)
+    currentTimePointerViewTopConstraint.isActive = true
     
     DispatchQueue.global(qos: .userInteractive).async {
       while true {
         DispatchQueue.main.async {
           self.refreshCurrentTimePointerView()
         }
-        sleep(1000)
+        sleep(1)
       }
     }
   }
   
+  func getY(for date: Date) -> CGFloat {
+    return CGFloat(date.hour) * timeFrameViewHeight + CGFloat(date.minute)
+  }
+  
   func refreshCurrentTimePointerView() {
-    var position: CGFloat = CGFloat(Date().hour) * timeFrameViewHeight + CGFloat(Date().minute)
-    
+    var position: CGFloat = getY(for: Date())
     position -= circleRadius / 2
-    currentTimePointerView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: position).isActive = true
+    currentTimePointerViewTopConstraint.constant = position
     layoutIfNeeded()
+  }
+  
+  func reloadData() {
+    guard let dataSource = dataSource else {
+      return
+    }
+    
+    for view in containerView.subviews {
+      for subview in view.subviews {
+        if subview.tag == eventViewTag {
+          subview.removeFromSuperview()
+        }
+      }
+    }
+    
+    let events = dataSource.scheduleViewGenerateEvents(self)
+    for event in events {
+      initEventView(for: event)
+    }
+  }
+  
+  func initEventView(for event: ScheduleEvent) {
+    let eventView = UIView()
+    eventView.tag = eventViewTag
+    eventView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(eventView)
+    
+    let top = getY(for: event.startDate)
+    let height = getY(for: event.endDate) - top
+    eventView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: top).isActive = true
+    eventView.heightAnchor.constraint(equalToConstant: height).isActive = true
+    eventView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding * 3).isActive = true
+    eventView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding * 2).isActive = true
+    
+    eventView.backgroundColor = UIColor.randomFlat()
   }
 }
