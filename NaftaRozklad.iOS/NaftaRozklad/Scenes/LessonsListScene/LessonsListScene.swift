@@ -10,21 +10,23 @@ import UIKit
 import SwiftDate
 
 class LessonsListScene: UIViewController {
-  @IBOutlet var dayNumberButtons: [UIButton]!
-  @IBOutlet var scheduleView: ScheduleView!
-  
+  weak var scheduleCollectionView: UICollectionView!
   weak var previousDayNumberButton: UIButton?
-  var timeLabels = [String]()
+  
+  @IBOutlet var dayNumberButtons: [UIButton]!
+  @IBOutlet weak var dayNumbersContainer: UIView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    initScheduleCollectionView()
     initDayNumberButtons()
-    initScheduleView()
   }
   
-  func initScheduleView() {
-    scheduleView.dataSource = self
-    scheduleView.reloadData()
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    let weekday = Formatter.weekday(for: Date())
+    let indexPath = IndexPath(row: weekday, section: 0)
+    scheduleCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
   }
   
   func initDayNumberButtons() {
@@ -36,33 +38,31 @@ class LessonsListScene: UIViewController {
       let day = data[i]
       button.setTitle(String(day), for: .normal)
       button.addTarget(self, action: #selector(dayNumberButtonPressed(_:)), for: .touchUpInside)
-      
-      if day == today.day {
-        button.sendActions(for: .touchUpInside)
-      }
     }
   }
   
-  func initTimeLabels() {
-    var cmp = DateComponents()
+  func initScheduleCollectionView() {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
+    let collection = UICollectionView(frame: view.frame,  collectionViewLayout: layout)
+    scheduleCollectionView = collection
+    scheduleCollectionView.showsHorizontalScrollIndicator = false
+    scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    scheduleCollectionView.isPagingEnabled = true
+    scheduleCollectionView.backgroundColor = UIColor.white
+    view.addSubview(scheduleCollectionView)
+    scheduleCollectionView.register(ScheduleViewCell.self, forCellWithReuseIdentifier: ScheduleViewCell.identifier)
     
-    for hour in 1...24 {
-      cmp.hour = hour
-      let date = DateInRegion(components: cmp)
-      if let str = date?.string(format: .custom("h a")) {
-        timeLabels.append(str)
-      }
-    }
-  }
-  
-  @IBAction func scheduleViewSwiped(_ sender: UISwipeGestureRecognizer) {
-    if sender.direction == .right {
-      print("right")
-    }
+    NSLayoutConstraint.activate([
+      scheduleCollectionView.topAnchor.constraint(equalTo: dayNumbersContainer.topAnchor),
+      scheduleCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      scheduleCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scheduleCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    ])
     
-    if sender.direction == .left {
-      print("left")
-    }
+    scheduleCollectionView.delegate = self
+    scheduleCollectionView.dataSource = self
+    scheduleCollectionView.reloadData()
   }
   
   @objc func dayNumberButtonPressed(_ sender: UIButton) {
@@ -75,6 +75,12 @@ class LessonsListScene: UIViewController {
     sender.makeRound()
     sender.backgroundColor = UIColor.flatWhite()
     sender.setTitleColor(UIColor.flatWatermelon(), for: .normal)
+    
+    if let weekday = dayNumberButtons.index(of: sender) {
+      let indexPath = IndexPath(row: weekday, section: 0)
+      scheduleCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     previousDayNumberButton = sender
   }
 }
@@ -86,5 +92,28 @@ extension LessonsListScene: ScheduleViewDataSource {
     let endDate = Date() - 2.hours + 30.minute
     let event = ScheduleEvent(startDate: startDate, endDate: endDate)
     return [event]
+  }
+}
+
+
+extension LessonsListScene: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: scheduleCollectionView.frame.width, height: scheduleCollectionView.frame.height)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
+  }
+}
+
+
+extension LessonsListScene: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleViewCell.identifier, for: indexPath)
+    return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 7
   }
 }

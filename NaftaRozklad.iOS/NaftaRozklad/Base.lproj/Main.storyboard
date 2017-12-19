@@ -215,7 +215,7 @@
                                                 <rect key="frame" x="95.5" y="0.0" width="48" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20P-pt-yA8">
-                                                        <rect key="frame" x="9" y="15" width="30" height="30"/>
+                                                        <rect key="frame" x="9.5" y="15" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="sqp-Pt-gnC"/>
                                                             <constraint firstAttribute="height" constant="30" id="vlc-Ih-g6J"/>
@@ -255,7 +255,7 @@
                                                 <rect key="frame" x="191.5" y="0.0" width="48" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hai-2t-X6E">
-                                                        <rect key="frame" x="9" y="15" width="30" height="30"/>
+                                                        <rect key="frame" x="8.5" y="15" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="4U2-5c-Pw5"/>
                                                             <constraint firstAttribute="height" constant="30" id="GTb-JQ-66N"/>
@@ -343,31 +343,19 @@
                                     <constraint firstItem="jvX-Xa-AMd" firstAttribute="top" secondItem="oZH-HD-dBl" secondAttribute="bottom" id="wn4-xS-vmC"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnC-wC-YhN" customClass="ScheduleView" customModule="NaftaRozklad" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="170" width="375" height="448"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="17P-Sf-YwV" appends="YES" id="hxi-YU-z3n"/>
-                                    <outletCollection property="gestureRecognizers" destination="3L5-EK-b2N" appends="YES" id="3Vr-GA-iKU"/>
-                                </connections>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="49y-su-oUR" firstAttribute="top" secondItem="bAU-3O-dZv" secondAttribute="top" id="8ar-Hp-RK8"/>
                             <constraint firstItem="49y-su-oUR" firstAttribute="leading" secondItem="O4B-BL-Zf1" secondAttribute="leading" id="aHC-Ux-HG4"/>
-                            <constraint firstItem="O4B-BL-Zf1" firstAttribute="bottom" secondItem="PnC-wC-YhN" secondAttribute="bottom" id="aLg-h4-XSt"/>
-                            <constraint firstItem="PnC-wC-YhN" firstAttribute="leading" secondItem="O4B-BL-Zf1" secondAttribute="leading" id="chs-aF-VKp"/>
                             <constraint firstItem="49y-su-oUR" firstAttribute="trailing" secondItem="O4B-BL-Zf1" secondAttribute="trailing" id="gkk-Sy-bCa"/>
-                            <constraint firstItem="PnC-wC-YhN" firstAttribute="top" secondItem="49y-su-oUR" secondAttribute="bottom" id="mgZ-vX-C7r"/>
-                            <constraint firstItem="O4B-BL-Zf1" firstAttribute="trailing" secondItem="PnC-wC-YhN" secondAttribute="trailing" id="ux5-gc-lXT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O4B-BL-Zf1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Lessons" image="LessonsIcon" id="Qx2-7M-iUy"/>
                     <connections>
-                        <outlet property="scheduleView" destination="PnC-wC-YhN" id="xNw-EW-8bh"/>
+                        <outlet property="dayNumbersContainer" destination="jvX-Xa-AMd" id="ofd-Jq-jEs"/>
                         <outletCollection property="dayNumberButtons" destination="ozq-Ed-bw3" collectionClass="NSMutableArray" id="0Xb-em-Klb"/>
                         <outletCollection property="dayNumberButtons" destination="DqX-Rj-GF0" collectionClass="NSMutableArray" id="jG1-Cz-zTm"/>
                         <outletCollection property="dayNumberButtons" destination="20P-pt-yA8" collectionClass="NSMutableArray" id="bbp-p6-Svh"/>
@@ -378,16 +366,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoQ-A9-nxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="17P-Sf-YwV">
-                    <connections>
-                        <action selector="scheduleViewSwiped:" destination="nzT-VE-ONC" id="TUy-8j-nrb"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="3L5-EK-b2N">
-                    <connections>
-                        <action selector="scheduleViewSwiped:" destination="nzT-VE-ONC" id="I1e-ey-Rwm"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2160.8000000000002" y="580.65967016491754"/>
         </scene>

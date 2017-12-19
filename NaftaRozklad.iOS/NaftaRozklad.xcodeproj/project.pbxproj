@@ -26,6 +26,7 @@
 		7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938D1FDDD75500F3B3C2 /* Formatter.swift */; };
 		797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */; };
 		797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193961FE04FEE00F3B3C2 /* ScheduleView.swift */; };
+		7971939E1FE54D7600F3B3C2 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971939D1FE54D7600F3B3C2 /* ScheduleViewCell.swift */; };
 		79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B3C19A1F851267001A9FB3 /* AppDelegate.swift */; };
 		79B3C1A01F851267001A9FB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C19E1F851267001A9FB3 /* Main.storyboard */; };
 		79B3C1A21F851267001A9FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B3C1A11F851267001A9FB3 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		7971938D1FDDD75500F3B3C2 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPlus.swift; sourceTree = "<group>"; };
 		797193961FE04FEE00F3B3C2 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		7971939D1FE54D7600F3B3C2 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		79B3C1971F851267001A9FB3 /* NaftaRozklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaftaRozklad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B3C19A1F851267001A9FB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79B3C19F1F851267001A9FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */,
+				7971939D1FE54D7600F3B3C2 /* ScheduleViewCell.swift */,
 			);
 			path = LessonsListScene;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */,
 				7944EFD11FDD9183008150F7 /* Preferences.swift in Sources */,
 				7944EFC21FDD8F98008150F7 /* Subgroup.swift in Sources */,
+				7971939E1FE54D7600F3B3C2 /* ScheduleViewCell.swift in Sources */,
 				797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */,
 				7944EFBE1FDD8F98008150F7 /* Day.swift in Sources */,
 				79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */,

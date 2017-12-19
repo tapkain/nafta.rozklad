@@ -9,16 +9,11 @@
 import Foundation
 
 class Formatter {
-  static let dayFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "dd"
-    return formatter
-  }()
   
-  static let timeFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.timeStyle = .short
-    formatter.timeZone = TimeZone.current
-    return formatter
-  }()
+  // Sunday is the first weekday, this returns
+  // it as last weekday
+  static func weekday(for date: Date) -> Int {
+    let weekday = date.weekday - 2
+    return weekday >= 0 ? weekday : 7
+  }
 }

@@ -56,12 +56,14 @@ class ScheduleView: UIScrollView {
     containerView.translatesAutoresizingMaskIntoConstraints = false
     addSubview(containerView)
     
-    containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-    containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-    containerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-    containerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-    containerView.heightAnchor.constraint(equalToConstant: timeFrameViewHeight * 25).isActive = true
-    containerView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+    NSLayoutConstraint.activate([
+      containerView.topAnchor.constraint(equalTo: topAnchor, constant: timeFrameViewHeight),
+      containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      containerView.heightAnchor.constraint(equalToConstant: timeFrameViewHeight * 24),
+      containerView.widthAnchor.constraint(equalTo: widthAnchor)
+      ])
   }
   
   func initTimeFrameViews() {
@@ -76,10 +78,11 @@ class ScheduleView: UIScrollView {
     container.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(container)
     
-    container.topAnchor.constraint(equalTo: containerView.topAnchor, constant: timeFrameViewHeight * CGFloat(hour)).isActive = true
-    container.heightAnchor.constraint(equalToConstant: timeFrameViewHeight).isActive = true
-    container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding).isActive = true
-    container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding).isActive = true
+    NSLayoutConstraint.activate([
+      container.topAnchor.constraint(equalTo: containerView.topAnchor, constant: timeFrameViewHeight * CGFloat(hour)),
+      container.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+      container.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
+      ])
   }
   
   func initTimeFrameLabel(for hour: Int) {
@@ -91,19 +94,23 @@ class ScheduleView: UIScrollView {
     label.textColor = UIColor.flatGray()
     container.addSubview(label)
     
-    label.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
-    label.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
-    label.widthAnchor.constraint(equalToConstant: padding + (padding / 2)).isActive = true
+    NSLayoutConstraint.activate([
+      label.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+      label.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+      label.widthAnchor.constraint(equalToConstant: padding + (padding / 2))
+      ])
     
     let separatorView = UIView()
     separatorView.translatesAutoresizingMaskIntoConstraints = false
     separatorView.backgroundColor = UIColor.flatGray()
     container.addSubview(separatorView)
     
-    separatorView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 5).isActive = true
-    separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-    separatorView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-    separatorView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+    NSLayoutConstraint.activate([
+      separatorView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 5),
+      separatorView.heightAnchor.constraint(equalToConstant: 1),
+      separatorView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+      separatorView.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+      ])
   }
   
   func getLocalizedTime(hour: Int) -> String {
@@ -123,18 +130,23 @@ class ScheduleView: UIScrollView {
     currentTimePointerView.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(currentTimePointerView)
     
-    currentTimePointerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding * 2 + (padding / 2)).isActive = true
-    currentTimePointerView.heightAnchor.constraint(equalToConstant: circleRadius).isActive = true
-    currentTimePointerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding).isActive = true
+    NSLayoutConstraint.activate([
+      currentTimePointerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding * 2 + (padding / 2)),
+      currentTimePointerView.heightAnchor.constraint(equalToConstant: circleRadius),
+      currentTimePointerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
+      ])
     
     let circleView = UIView()
     circleView.translatesAutoresizingMaskIntoConstraints = false
     currentTimePointerView.addSubview(circleView)
     
-    circleView.widthAnchor.constraint(equalToConstant: circleRadius).isActive = true
-    circleView.heightAnchor.constraint(equalToConstant: circleRadius).isActive = true
-    circleView.topAnchor.constraint(equalTo: currentTimePointerView.topAnchor).isActive = true
-    circleView.leadingAnchor.constraint(equalTo: currentTimePointerView.leadingAnchor).isActive = true
+    NSLayoutConstraint.activate([
+      circleView.widthAnchor.constraint(equalToConstant: circleRadius),
+      circleView.heightAnchor.constraint(equalToConstant: circleRadius),
+      circleView.topAnchor.constraint(equalTo: currentTimePointerView.topAnchor),
+      circleView.leadingAnchor.constraint(equalTo: currentTimePointerView.leadingAnchor)
+      ])
+    
     circleView.layer.cornerRadius = circleRadius / 2
     circleView.backgroundColor = UIColor.red
     
@@ -143,10 +155,13 @@ class ScheduleView: UIScrollView {
     separatorView.backgroundColor = UIColor.red
     currentTimePointerView.addSubview(separatorView)
     
-    separatorView.leadingAnchor.constraint(equalTo: circleView.trailingAnchor).isActive = true
-    separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-    separatorView.trailingAnchor.constraint(equalTo: currentTimePointerView.trailingAnchor).isActive = true
-    separatorView.bottomAnchor.constraint(equalTo: currentTimePointerView.bottomAnchor, constant: -(circleRadius / 2)).isActive = true
+    NSLayoutConstraint.activate([
+      separatorView.leadingAnchor.constraint(equalTo: circleView.trailingAnchor),
+      separatorView.heightAnchor.constraint(equalToConstant: 1),
+      separatorView.trailingAnchor.constraint(equalTo: currentTimePointerView.trailingAnchor),
+      separatorView.bottomAnchor.constraint(equalTo: currentTimePointerView.bottomAnchor, constant: -(circleRadius / 2))
+      ])
+    
     currentTimePointerViewTopConstraint = currentTimePointerView.topAnchor.constraint(equalTo: containerView.topAnchor)
     currentTimePointerViewTopConstraint.isActive = true
     
@@ -161,7 +176,7 @@ class ScheduleView: UIScrollView {
   }
   
   func getY(for date: Date) -> CGFloat {
-    return CGFloat(date.hour) * timeFrameViewHeight + CGFloat(date.minute)
+    return CGFloat(date.hour - 1) * timeFrameViewHeight + CGFloat(date.minute)
   }
   
   func refreshCurrentTimePointerView() {
@@ -198,11 +213,15 @@ class ScheduleView: UIScrollView {
     
     let top = getY(for: event.startDate)
     let height = getY(for: event.endDate) - top
-    eventView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: top).isActive = true
-    eventView.heightAnchor.constraint(equalToConstant: height).isActive = true
-    eventView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding * 3).isActive = true
-    eventView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding * 2).isActive = true
+    
+    NSLayoutConstraint.activate([
+      eventView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: top),
+      eventView.heightAnchor.constraint(equalToConstant: height),
+      eventView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding * 3),
+      eventView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding * 2)
+      ])
     
     eventView.backgroundColor = UIColor.randomFlat()
   }
 }
+
