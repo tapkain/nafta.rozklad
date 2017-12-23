@@ -11,24 +11,29 @@ import PromiseKit
 class GroupLogic {
   static let sharedInstance = GroupLogic()
   
-  func initData() -> Promise<[Group]> {
+  func initData() -> Promise<[GroupViewModel]> {
     if Preferences.sharedInstance.firstLaunch {
       Preferences.sharedInstance.firstLaunch = false
-      return WebApi.sharedInstance.getGroups().then {
-        try! RealmManager.sharedInstance.insert($0)
-        return Promise(value: $0)
-      }
+      return refreshData()
     }
     
     if WebApi.sharedInstance.isConnectedToInternet() {
-      try! RealmManager.sharedInstance.deleteAll(Group.self)
-      return WebApi.sharedInstance.getGroups().then {
-        try! RealmManager.sharedInstance.insert($0)
-        return Promise(value: $0)
-      }
+      return refreshData()
     }
     
-    let groups = Array(try! RealmManager.sharedInstance.get(Group.self))
-    return Promise(value: groups)
+    guard let allGroups = try? RealmManager.sharedInstance.get(Group.self) else {
+      return Promise(value: [GroupViewModel]())
+    }
+    
+    let groups = Array(allGroups)
+    return Promise(value: GroupViewModel.from(groups: groups))
+  }
+  
+  func refreshData() -> Promise<[GroupViewModel]> {
+    return WebApi.sharedInstance.getGroups().then {
+      try? RealmManager.sharedInstance.deleteAll(Group.self)
+      try? RealmManager.sharedInstance.insert($0)
+      return Promise(value: GroupViewModel.from(groups: $0))
+    }
   }
 }

@@ -10,13 +10,16 @@ import UIKit
 import RealmSwift
 
 class GroupSelectionScene: UICollectionViewController {
-  var groups = [Group]()
+  var groups = [GroupViewModel]()
   var searchController: UISearchController!
+  var refreshControl = UIRefreshControl()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    tabBarController?.tabBar.items![1].isEnabled = false
     initData()
     initSearchController()
+    initPullToRefresh()
   }
   
   func initData() {
@@ -24,10 +27,10 @@ class GroupSelectionScene: UICollectionViewController {
     GroupLogic.sharedInstance.initData().then { groups -> Void in
       self.groups = groups
       self.collectionView?.reloadData()
-      }.always {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-      }.catch {
-        print($0)
+    }.always {
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }.catch {_ in
+      Alert.showNoInternetConnection(for: self)
     }
   }
   
@@ -46,6 +49,11 @@ class GroupSelectionScene: UICollectionViewController {
       searchController.hidesNavigationBarDuringPresentation = false
     }
   }
+  
+  func initPullToRefresh() {
+    collectionView?.refreshControl = refreshControl
+    refreshControl.addTarget(self, action: #selector(refreshGroups(_:)), for: .valueChanged)
+  }
 }
 
 
@@ -53,6 +61,19 @@ class GroupSelectionScene: UICollectionViewController {
 extension GroupSelectionScene {
   @objc func searchButtonPressed(_ sender: UIBarButtonItem) {
     present(searchController, animated: true)
+  }
+  
+  @objc func refreshGroups(_ sender: UIRefreshControl) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    GroupLogic.sharedInstance.refreshData().then { groups -> Void in
+      self.groups = groups
+      self.collectionView?.reloadData()
+    }.always {
+      self.refreshControl.endRefreshing()
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }.catch {_ in
+      Alert.showNoInternetConnection(for: self)
+    }
   }
 }
 
@@ -79,6 +100,7 @@ extension GroupSelectionScene: UICollectionViewDelegateFlowLayout {
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    tabBarController?.tabBar.items![1].isEnabled = true
     print("selected item ", groups[indexPath.row].name)
   }
 }
@@ -95,7 +117,7 @@ extension GroupSelectionScene: UISearchResultsUpdating {
       filteredGroups = try! RealmManager.sharedInstance.get(Group.self)
     }
     
-    groups = Array(filteredGroups)
+    groups = GroupViewModel.from(groups: Array(filteredGroups))
     collectionView?.reloadData()
   }
 }
