@@ -10,7 +10,7 @@ import UIKit
 
 class ScheduleViewCell: UICollectionViewCell {
   static let identifier = String(describing: ScheduleViewCell.self)
-  @IBOutlet weak var scheduleView: ScheduleView!
+  weak var scheduleView: ScheduleView!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -24,6 +24,7 @@ class ScheduleViewCell: UICollectionViewCell {
   
   func commonInit() {
     let scheduleView = ScheduleView()
+    self.scheduleView = scheduleView
     scheduleView.translatesAutoresizingMaskIntoConstraints = false
     addSubview(scheduleView)
     

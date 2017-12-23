@@ -165,6 +165,7 @@ class ScheduleView: UIScrollView {
     currentTimePointerViewTopConstraint = currentTimePointerView.topAnchor.constraint(equalTo: containerView.topAnchor)
     currentTimePointerViewTopConstraint.isActive = true
     
+    // Maybe better to use Timer API?
     DispatchQueue.global(qos: .userInteractive).async {
       while true {
         DispatchQueue.main.async {
