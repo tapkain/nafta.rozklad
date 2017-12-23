@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class GroupSelectionScene: UITableViewController {
+class GroupSelectionScene: UICollectionViewController {
   var groups = [Group]()
   var searchController: UISearchController!
   
@@ -23,10 +23,10 @@ class GroupSelectionScene: UITableViewController {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     GroupLogic.sharedInstance.initData().then { groups -> Void in
       self.groups = groups
-      self.tableView.reloadData()
-    }.always {
+      self.collectionView?.reloadData()
+      }.always {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }.catch {
+      }.catch {
         print($0)
     }
   }
@@ -40,20 +40,31 @@ class GroupSelectionScene: UITableViewController {
       navigationItem.searchController = searchController
       navigationItem.hidesSearchBarWhenScrolling = false
     } else {
-      tableView.tableHeaderView = searchController.searchBar
+      let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed(_:)))
+      searchButton.tintColor = UIColor.flatWhite()
+      navigationItem.rightBarButtonItem = searchButton
+      searchController.hidesNavigationBarDuringPresentation = false
     }
   }
 }
 
 
-// MARK: - UITableViewDataSource
+// MARK: - Actions
 extension GroupSelectionScene {
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  @objc func searchButtonPressed(_ sender: UIBarButtonItem) {
+    present(searchController, animated: true)
+  }
+}
+
+
+// MARK: - UICollectionViewDataSource
+extension GroupSelectionScene {
+  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return groups.count
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: GroupSelectionCell.identifier, for: indexPath) as! GroupSelectionCell
+  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupSelectionCell.identifier, for: indexPath) as! GroupSelectionCell
     
     cell.groupName.text = groups[indexPath.row].name
     return cell
@@ -61,10 +72,14 @@ extension GroupSelectionScene {
 }
 
 
-// MARK: - UITableViewDelegate
-extension GroupSelectionScene {
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("Selected item at ", indexPath.row)
+// MARK: - UICollectionViewFlowDelegate
+extension GroupSelectionScene: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: view.frame.width - 30, height: 55)
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    print("selected item ", groups[indexPath.row].name)
   }
 }
 
@@ -81,6 +96,6 @@ extension GroupSelectionScene: UISearchResultsUpdating {
     }
     
     groups = Array(filteredGroups)
-    tableView.reloadData()
+    collectionView?.reloadData()
   }
 }

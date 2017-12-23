@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupSelectionCell: UITableViewCell {
+class GroupSelectionCell: UICollectionViewCell {
   static let identifier = String(describing: GroupSelectionCell.self)
   
   @IBOutlet var groupName: UILabel!
