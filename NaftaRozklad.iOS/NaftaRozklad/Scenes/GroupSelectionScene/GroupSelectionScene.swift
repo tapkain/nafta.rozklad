@@ -24,13 +24,16 @@ class GroupSelectionScene: UICollectionViewController {
   
   func initData() {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    Alert.sharedInstance.showActivityIndicator(for: self)
+    
     GroupLogic.sharedInstance.initData().then { groups -> Void in
       self.groups = groups
       self.collectionView?.reloadData()
     }.always {
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      Alert.sharedInstance.hideActivityIndicator(for: self)
     }.catch {_ in
-      Alert.showNoInternetConnection(for: self)
+      Alert.sharedInstance.showNoInternetConnection(for: self)
     }
   }
   
@@ -40,6 +43,7 @@ class GroupSelectionScene: UICollectionViewController {
     searchController.dimsBackgroundDuringPresentation = false
     
     if #available(iOS 11.0, *) {
+      searchController.searchBar.tintColor = UIColor.flatWhite()
       navigationItem.searchController = searchController
       navigationItem.hidesSearchBarWhenScrolling = false
     } else {
@@ -72,7 +76,7 @@ extension GroupSelectionScene {
       self.refreshControl.endRefreshing()
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }.catch {_ in
-      Alert.showNoInternetConnection(for: self)
+      Alert.sharedInstance.showNoInternetConnection(for: self)
     }
   }
 }
@@ -96,12 +100,24 @@ extension GroupSelectionScene {
 // MARK: - UICollectionViewFlowDelegate
 extension GroupSelectionScene: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.frame.width - 30, height: 55)
+    return CGSize(width: view.frame.width - 30, height: 50)
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    tabBarController?.tabBar.items![1].isEnabled = true
-    print("selected item ", groups[indexPath.row].name)
+    if let group = Group.from(viewModel: groups[indexPath.row]) {
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
+      Alert.sharedInstance.showActivityIndicator(for: self)
+      
+      LessonLogic.sharedInstance.initData(for: group).then {_ -> Void in
+        self.tabBarController?.tabBar.items![1].isEnabled = true
+        self.tabBarController?.selectedIndex = 1
+      }.always {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        Alert.sharedInstance.hideActivityIndicator(for: self)
+      }.catch {_ in
+        Alert.sharedInstance.showNoInternetConnection(for: self)
+      }
+    }
   }
 }
 
@@ -109,15 +125,17 @@ extension GroupSelectionScene: UICollectionViewDelegateFlowLayout {
 // MARK: - UISearchResultsUpdating
 extension GroupSelectionScene: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    var filteredGroups: Results<Group>!
+    var filteredGroups: Results<Group>?
     
     if let searchText = searchController.searchBar.text, searchText.count != 0 {
-      filteredGroups =  try! RealmManager.sharedInstance.get(Group.self).filter("name CONTAINS[cd] %@", searchText)
+      filteredGroups =  try? RealmManager.sharedInstance.get(Group.self).filter("name CONTAINS[cd] %@", searchText)
     } else {
-      filteredGroups = try! RealmManager.sharedInstance.get(Group.self)
+      filteredGroups = try? RealmManager.sharedInstance.get(Group.self)
     }
     
-    groups = GroupViewModel.from(groups: Array(filteredGroups))
-    collectionView?.reloadData()
+    if let filteredGroups = filteredGroups {
+      groups = GroupViewModel.from(groups: Array(filteredGroups))
+      collectionView?.reloadData()
+    }
   }
 }

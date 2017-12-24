@@ -140,7 +140,7 @@ extension LessonsListScene: UICollectionViewDataSource {
     //cell.scheduleView.dataSource = self
     //cell.scheduleView.reloadData()
     let colors: [UIColor] = [.red, .green, .blue, .yellow, .black, .magenta, .cyan]
-    cell.backgroundColor = colors[indexPath.row]
+    //cell.backgroundColor = colors[indexPath.row]
     return cell
   }
   

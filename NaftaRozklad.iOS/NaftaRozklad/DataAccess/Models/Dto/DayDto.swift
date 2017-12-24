@@ -6,7 +6,7 @@
 //  Copyright © 2017 Yevhen Velizhenkov. All rights reserved.
 //
 
-class DayDto: Codable {
-  var lessons: [LessonDto]!
-  var day = Day.monday
+struct DayDto: Codable {
+  let lessons: [LessonDto]
+  let day: Int
 }

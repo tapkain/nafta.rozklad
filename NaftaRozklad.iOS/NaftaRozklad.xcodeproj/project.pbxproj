@@ -18,7 +18,6 @@
 		7944EFC41FDD8F98008150F7 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFBD1FDD8F98008150F7 /* Lesson.swift */; };
 		7944EFC71FDD8FB7008150F7 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFC61FDD8FB7008150F7 /* RealmManager.swift */; };
 		7944EFCB1FDD8FD5008150F7 /* WebApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFC91FDD8FD5008150F7 /* WebApi.swift */; };
-		7944EFCC1FDD8FD5008150F7 /* WebApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFCA1FDD8FD5008150F7 /* WebApiError.swift */; };
 		7944EFCF1FDD907B008150F7 /* GroupLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFCE1FDD907B008150F7 /* GroupLogic.swift */; };
 		7944EFD11FDD9183008150F7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944EFD01FDD9183008150F7 /* Preferences.swift */; };
 		797193801FDDAE0600F3B3C2 /* LessonsListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */; };
@@ -51,7 +50,6 @@
 		7944EFBD1FDD8F98008150F7 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		7944EFC61FDD8FB7008150F7 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7944EFC91FDD8FD5008150F7 /* WebApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApi.swift; sourceTree = "<group>"; };
-		7944EFCA1FDD8FD5008150F7 /* WebApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApiError.swift; sourceTree = "<group>"; };
 		7944EFCE1FDD907B008150F7 /* GroupLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLogic.swift; sourceTree = "<group>"; };
 		7944EFD01FDD9183008150F7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		7971937F1FDDAE0600F3B3C2 /* LessonsListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListScene.swift; sourceTree = "<group>"; };
@@ -103,6 +101,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		794142131FEF943500A7BB9C /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFBD1FDD8F98008150F7 /* Lesson.swift */,
+				7944EFBC1FDD8F98008150F7 /* Group.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		794142141FEF963900A7BB9C /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFB91FDD8F98008150F7 /* LessonDto.swift */,
+				7944EFBA1FDD8F98008150F7 /* DayDto.swift */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
+		794142151FEF964400A7BB9C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7944EFB81FDD8F98008150F7 /* Week.swift */,
+				7944EFBB1FDD8F98008150F7 /* Subgroup.swift */,
+				7944EFB71FDD8F98008150F7 /* Day.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		7944EFAF1FDD8EA8008150F7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,14 +160,10 @@
 		7944EFB61FDD8F82008150F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				794142151FEF964400A7BB9C /* Common */,
+				794142141FEF963900A7BB9C /* Dto */,
+				794142131FEF943500A7BB9C /* Realm */,
 				797193A31FEEF0FB00F3B3C2 /* ViewModels */,
-				7944EFB71FDD8F98008150F7 /* Day.swift */,
-				7944EFBA1FDD8F98008150F7 /* DayDto.swift */,
-				7944EFBC1FDD8F98008150F7 /* Group.swift */,
-				7944EFBD1FDD8F98008150F7 /* Lesson.swift */,
-				7944EFB91FDD8F98008150F7 /* LessonDto.swift */,
-				7944EFBB1FDD8F98008150F7 /* Subgroup.swift */,
-				7944EFB81FDD8F98008150F7 /* Week.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				7944EFC91FDD8FD5008150F7 /* WebApi.swift */,
-				7944EFCA1FDD8FD5008150F7 /* WebApiError.swift */,
 			);
 			path = WebApi;
 			sourceTree = "<group>";
@@ -339,6 +360,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NaftaRozklad/Pods-NaftaRozklad-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -348,6 +370,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -404,7 +427,6 @@
 				7944EFC71FDD8FB7008150F7 /* RealmManager.swift in Sources */,
 				7944EFB31FDD8F45008150F7 /* GroupSelectionCell.swift in Sources */,
 				7944EFBF1FDD8F98008150F7 /* Week.swift in Sources */,
-				7944EFCC1FDD8FD5008150F7 /* WebApiError.swift in Sources */,
 				7944EFC01FDD8F98008150F7 /* LessonDto.swift in Sources */,
 				7944EFB41FDD8F45008150F7 /* GroupSelectionScene.swift in Sources */,
 				797193A21FEEA3CD00F3B3C2 /* RoundLabel.swift in Sources */,

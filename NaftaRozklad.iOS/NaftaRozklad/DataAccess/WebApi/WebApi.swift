@@ -24,9 +24,9 @@ class WebApi {
     }
   }
   
-  func getSchedule(for group: Group, week: Week, subgroup: Subgroup) -> Promise<[DayDto]> {
+  func getSchedule(for group: Group, week: Week = .common, subgroup: Subgroup = .common) -> Promise<[DayDto]> {
     let url = "\(baseUrl)/api/schedules.php"
-    let parameters: Parameters = ["group_id": group.id, "week": week, "subgroup": subgroup]
+    let parameters: Parameters = ["group_id": group.id, "week": week.rawValue, "subgroup": subgroup.rawValue]
     
     return Alamofire.request(url, method: .get, parameters: parameters).validate().responseData().then {
       guard let days = try? JSONDecoder().decode([DayDto].self, from: $0) else {

@@ -21,3 +21,13 @@ class Group: Object, Codable {
     case hasSubgroups = "has_subgroups"
   }
 }
+
+
+extension Group {
+  static func from(viewModel: GroupViewModel) -> Group? {
+    guard let groupCache = try? RealmManager.sharedInstance.get(Group.self) else {
+      return nil
+    }
+    return groupCache.filter("id == %@", viewModel.id).first
+  }
+}

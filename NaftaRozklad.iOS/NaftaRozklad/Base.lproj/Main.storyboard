@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -68,7 +69,7 @@
         <!--Groups-->
         <scene sceneID="kGt-ZL-IfL">
             <objects>
-                <collectionViewController id="xBS-1d-JGD" customClass="GroupSelectionScene" customModule="NaftaRozklad" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController definesPresentationContext="YES" id="xBS-1d-JGD" customClass="GroupSelectionScene" customModule="NaftaRozklad" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="NHb-qr-zgT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

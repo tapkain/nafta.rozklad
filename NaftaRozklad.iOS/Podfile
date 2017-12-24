@@ -2,6 +2,7 @@ target 'NaftaRozklad' do
 use_frameworks!
 pod 'RealmSwift'
 pod 'Alamofire'
+pod 'AlamofireNetworkActivityLogger'
 pod 'PromiseKit'
 pod 'PromiseKit/Alamofire'
 pod 'ChameleonFramework/Swift'

@@ -15,7 +15,7 @@ class RealmManager {
     try insert([model])
   }
   
-  func insert<Model: Object>(_ models: [Model]) throws {
+  func insert<Model: Object, Collection: Sequence>(_ models: Collection) throws where Collection.Element == Model {
     let realm = try Realm()
     
     try realm.write {

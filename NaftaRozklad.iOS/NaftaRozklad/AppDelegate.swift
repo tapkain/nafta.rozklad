@@ -9,6 +9,7 @@
 import UIKit
 import ChameleonFramework
 import SwiftDate
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     let ukraineRegion = Region(tz: TimeZoneName.europeKiev, cal: CalendarName.gregorian, loc: LocaleName.ukrainianUkraine)
     Date.setDefaultRegion(ukraineRegion)
+    
+//    NetworkActivityLogger.shared.level = .debug
+//    NetworkActivityLogger.shared.startLogging()
     return true
   }
 }

@@ -24,4 +24,31 @@ class LessonLogic {
     
     return models
   }
+  
+  func initData(for group: Group) -> Promise<Void> {
+    var lessons: Set<Lesson> = []
+    
+    return WebApi.sharedInstance.getSchedule(for: group, week: .numerator, subgroup: .first).then { days -> Void in
+      let weekLessons = Set(Lesson.from(group: group, for: days))
+      lessons.formUnion(weekLessons)
+    }.then {
+      WebApi.sharedInstance.getSchedule(for: group, week: .denumerator, subgroup: .first)
+    }.then { days -> Void in
+      let weekLessons = Set(Lesson.from(group: group, for: days))
+      lessons.formUnion(weekLessons)
+    }.then {
+      WebApi.sharedInstance.getSchedule(for: group, week: .numerator, subgroup: .second)
+    }.then { days -> Void in
+      let weekLessons = Set(Lesson.from(group: group, for: days))
+      lessons.formUnion(weekLessons)
+    }.then {
+      WebApi.sharedInstance.getSchedule(for: group, week: .denumerator, subgroup: .second)
+    }.then { days -> Void in
+      let weekLessons = Set(Lesson.from(group: group, for: days))
+      lessons.formUnion(weekLessons)
+      
+      try? RealmManager.sharedInstance.deleteAll(Lesson.self)
+      try? RealmManager.sharedInstance.insert(lessons)
+    }
+  }
 }

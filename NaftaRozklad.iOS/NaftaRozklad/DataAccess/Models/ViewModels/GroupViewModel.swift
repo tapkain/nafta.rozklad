@@ -9,12 +9,13 @@
 import Foundation
 
 struct GroupViewModel {
+  var id: String
   var name: String
 }
 
 extension GroupViewModel {
   static func from(group: Group) -> GroupViewModel {
-    return GroupViewModel(name: group.name)
+    return GroupViewModel(id: group.id, name: group.name)
   }
   
   static func from(groups: [Group]) -> [GroupViewModel] {
