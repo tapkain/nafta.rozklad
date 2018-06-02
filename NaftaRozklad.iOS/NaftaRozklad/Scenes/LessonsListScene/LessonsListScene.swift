@@ -12,6 +12,7 @@ import SwiftDate
 class LessonsListScene: UIViewController {
   weak var scheduleCollectionView: UICollectionView!
   weak var previousDayNumberButton: UIButton?
+  var currentVisibleDay: Day?
   
   @IBOutlet var dayNumberButtons: [UIButton]!
   @IBOutlet weak var dayNumbersContainer: UIView!
@@ -19,6 +20,7 @@ class LessonsListScene: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     initScheduleCollectionView()
+    
   }
   
   override func viewDidLayoutSubviews() {
@@ -49,6 +51,10 @@ extension LessonsListScene {
       button.backgroundColor = UIColor.clear
     }
     
+    if let index = dayNumberButtons.index(of: sender) {
+      currentVisibleDay = Day(rawValue: index + 1)
+    }
+    
     previousDayNumberButton = sender
   }
 }
@@ -58,7 +64,7 @@ extension LessonsListScene {
 extension LessonsListScene {
   func initDayNumberButtons() {
     dayNumberButtons.sort { $0.tag < $1.tag }
-    let today = Date()
+    let today = DateInRegion()
     let data = LessonLogic.sharedInstance.initTopCalendarData(for: today)
     
     for i in 0..<data.count {
@@ -104,11 +110,17 @@ extension LessonsListScene {
 
 // MARK: - ScheduleViewDataSource
 extension LessonsListScene: ScheduleViewDataSource {
+  func scheduleView(view for: ScheduleEvent) -> UIView {
+    return UIView()
+  }
+  
   func scheduleViewGenerateEvents(_ scheduleView: ScheduleView) -> [ScheduleEvent] {
-    let startDate = Date() - 4.hours
-    let endDate = Date() - 2.hours + 30.minute
-    let event = ScheduleEvent(startDate: startDate, endDate: endDate)
-    return [event]
+    guard let day = currentVisibleDay else {
+      return []
+    }
+    
+    let filter = Preferences.sharedInstance.lessonFilter
+    return LessonLogic.sharedInstance.getLessons(for: day, week: filter.week, subgroup: filter.subgroup)
   }
 }
 
@@ -136,12 +148,17 @@ extension LessonsListScene: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource
 extension LessonsListScene: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleViewCell.identifier, for: indexPath) as! ScheduleViewCell
-    //cell.scheduleView.dataSource = self
-    //cell.scheduleView.reloadData()
-    let colors: [UIColor] = [.red, .green, .blue, .yellow, .black, .magenta, .cyan]
-    //cell.backgroundColor = colors[indexPath.row]
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleViewCell.identifier, for: indexPath)
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    guard let cell = cell as? ScheduleViewCell else {
+      return
+    }
+    
+    cell.scheduleView.dataSource = self
+    cell.scheduleView.reloadData()
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

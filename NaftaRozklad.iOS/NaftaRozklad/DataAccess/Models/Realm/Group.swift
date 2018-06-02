@@ -23,6 +23,14 @@ class Group: Object, Codable {
 }
 
 
+// MARK: - Hashable
+extension Group {
+  override var hashValue: Int {
+    return id.hashValue ^ faculty.hashValue ^ name.hashValue
+  }
+}
+
+
 extension Group {
   static func from(viewModel: GroupViewModel) -> Group? {
     guard let groupCache = try? RealmManager.sharedInstance.get(Group.self) else {

@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import SwiftDate
 
 class Formatter {
   
   // Sunday is the first weekday, this returns
   // it as last weekday
-  static func weekday(for date: Date) -> Int {
+  static func weekday(for date: DateInRegion) -> Int {
     let weekday = date.weekday - 2
     return weekday >= 0 ? weekday : 7
   }

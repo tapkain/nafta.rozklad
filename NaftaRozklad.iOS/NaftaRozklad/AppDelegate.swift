@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ukraineRegion = Region(tz: TimeZoneName.europeKiev, cal: CalendarName.gregorian, loc: LocaleName.ukrainianUkraine)
     Date.setDefaultRegion(ukraineRegion)
     
-//    NetworkActivityLogger.shared.level = .debug
-//    NetworkActivityLogger.shared.startLogging()
+    NetworkActivityLogger.shared.level = .debug
+    NetworkActivityLogger.shared.startLogging()
     return true
   }
 }

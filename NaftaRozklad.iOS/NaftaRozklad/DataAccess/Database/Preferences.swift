@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import SwiftDate
 
 class Preferences {
+  struct LessonFilter {
+    var week: Week
+    var subgroup: Subgroup
+  }
+  
   static let sharedInstance = Preferences()
   let userDefaults = UserDefaults.standard
   
@@ -20,6 +26,19 @@ class Preferences {
     
     set {
       userDefaults.set(!newValue, forKey: "isNotFirstLaunch")
+    }
+  }
+  
+  var lessonFilter: LessonFilter {
+    get {
+      let today = DateInRegion()
+      let week = Week(rawValue: today.weekOfYear % 2) ?? .numerator
+      let subgroup = Subgroup(rawValue: userDefaults.integer(forKey: "currentSubgroup")) ?? .first
+      return LessonFilter(week: week, subgroup: subgroup)
+    }
+    
+    set {
+      userDefaults.set(newValue.subgroup.rawValue, forKey: "currentSubgroup")
     }
   }
 }

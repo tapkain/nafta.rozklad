@@ -10,12 +10,14 @@ import UIKit
 import SwiftDate
 
 struct ScheduleEvent {
-  var startDate: Date
-  var endDate: Date
+  var startDate: DateInRegion
+  var endDate: DateInRegion
 }
 
 protocol ScheduleViewDataSource {
   func scheduleViewGenerateEvents(_ scheduleView: ScheduleView) -> [ScheduleEvent]
+  
+  func scheduleView(view for: ScheduleEvent) -> UIView
 }
 
 @IBDesignable
@@ -176,12 +178,12 @@ class ScheduleView: UIScrollView {
     }
   }
   
-  func getY(for date: Date) -> CGFloat {
+  func getY(for date: DateInRegion) -> CGFloat {
     return CGFloat(date.hour - 1) * timeFrameViewHeight + CGFloat(date.minute)
   }
   
   func refreshCurrentTimePointerView() {
-    var position: CGFloat = getY(for: Date())
+    var position: CGFloat = getY(for: DateInRegion())
     position -= circleRadius / 2
     currentTimePointerViewTopConstraint.constant = position
     layoutIfNeeded()
@@ -202,12 +204,12 @@ class ScheduleView: UIScrollView {
     
     let events = dataSource.scheduleViewGenerateEvents(self)
     for event in events {
-      initEventView(for: event)
+      initEventView(for: event, from: dataSource)
     }
   }
   
-  func initEventView(for event: ScheduleEvent) {
-    let eventView = UIView()
+  func initEventView(for event: ScheduleEvent, from dataSource: ScheduleViewDataSource) {
+    let eventView = dataSource.scheduleView(view: event)
     eventView.tag = eventViewTag
     eventView.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(eventView)
@@ -220,7 +222,7 @@ class ScheduleView: UIScrollView {
       eventView.heightAnchor.constraint(equalToConstant: height),
       eventView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding * 3),
       eventView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding * 2)
-      ])
+    ])
     
     eventView.backgroundColor = UIColor.randomFlat()
   }

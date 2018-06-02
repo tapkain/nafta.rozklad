@@ -11,8 +11,9 @@ import SwiftDate
 
 class LessonLogic {
   static let sharedInstance = LessonLogic()
+  var lessons: [Lesson]!
   
-  func initTopCalendarData(for date: Date) -> [Int] {
+  func initTopCalendarData(for date: DateInRegion) -> [Int] {
     var models = [Int]()
     let start = -(date.weekday - 1)
     let end = 7 - date.weekday
@@ -26,29 +27,50 @@ class LessonLogic {
   }
   
   func initData(for group: Group) -> Promise<Void> {
-    var lessons: Set<Lesson> = []
+    lessons = []
     
     return WebApi.sharedInstance.getSchedule(for: group, week: .numerator, subgroup: .first).then { days -> Void in
-      let weekLessons = Set(Lesson.from(group: group, for: days))
-      lessons.formUnion(weekLessons)
+      self.lessons.append(contentsOf: Lesson.from(group: group, for: days))
     }.then {
       WebApi.sharedInstance.getSchedule(for: group, week: .denumerator, subgroup: .first)
     }.then { days -> Void in
-      let weekLessons = Set(Lesson.from(group: group, for: days))
-      lessons.formUnion(weekLessons)
+      self.lessons.append(contentsOf: Lesson.from(group: group, for: days))
     }.then {
       WebApi.sharedInstance.getSchedule(for: group, week: .numerator, subgroup: .second)
     }.then { days -> Void in
-      let weekLessons = Set(Lesson.from(group: group, for: days))
-      lessons.formUnion(weekLessons)
+      self.lessons.append(contentsOf: Lesson.from(group: group, for: days))
     }.then {
       WebApi.sharedInstance.getSchedule(for: group, week: .denumerator, subgroup: .second)
     }.then { days -> Void in
-      let weekLessons = Set(Lesson.from(group: group, for: days))
-      lessons.formUnion(weekLessons)
+      self.lessons.append(contentsOf: Lesson.from(group: group, for: days))
+      let set = self.lessons.unique
+      //self.makeUnique()
       
       try? RealmManager.sharedInstance.deleteAll(Lesson.self)
-      try? RealmManager.sharedInstance.insert(lessons)
+      try? RealmManager.sharedInstance.insert(self.lessons)
     }
+  }
+  
+  func getLessons(for day: Day, week: Week = .common, subgroup: Subgroup = .common) -> [ScheduleEvent] {
+    guard let lessons = try? RealmManager.sharedInstance.get(Lesson.self).filter("dayValue == %@ && weekValue == %@ && subgroupValue == %@", day.rawValue, week.rawValue, subgroup.rawValue) else {
+      return []
+    }
+    
+    return lessons.flatMap {
+      $0.toScheduleEvent()
+    }
+  }
+}
+
+
+extension Array where Element: Equatable {
+  var unique: [Element] {
+    var uniqueValues: [Element] = []
+    forEach { item in
+      if !uniqueValues.contains(item) {
+        uniqueValues += [item]
+      }
+    }
+    return uniqueValues
   }
 }

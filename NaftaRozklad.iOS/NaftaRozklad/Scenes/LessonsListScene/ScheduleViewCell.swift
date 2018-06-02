@@ -10,7 +10,12 @@ import UIKit
 
 class ScheduleViewCell: UICollectionViewCell {
   static let identifier = String(describing: ScheduleViewCell.self)
-  weak var scheduleView: ScheduleView!
+  var scheduleView: ScheduleView!
+  
+  override func prepareForReuse() {
+    scheduleView.delegate = nil
+    scheduleView.dataSource = nil
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)

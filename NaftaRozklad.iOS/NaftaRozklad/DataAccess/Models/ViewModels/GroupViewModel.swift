@@ -19,7 +19,7 @@ extension GroupViewModel {
   }
   
   static func from(groups: [Group]) -> [GroupViewModel] {
-    return groups.flatMap {
+    return groups.map {
       return from(group: $0)
     }
   }
