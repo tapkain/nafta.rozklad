@@ -24,7 +24,6 @@
 		797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193811FDDAE4000F3B3C2 /* LessonLogic.swift */; };
 		7971938E1FDDD75500F3B3C2 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938D1FDDD75500F3B3C2 /* Formatter.swift */; };
 		797193901FDDEA8A00F3B3C2 /* UIViewPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */; };
-		797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193961FE04FEE00F3B3C2 /* ScheduleView.swift */; };
 		7971939E1FE54D7600F3B3C2 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971939D1FE54D7600F3B3C2 /* ScheduleViewCell.swift */; };
 		797193A01FEEA2E900F3B3C2 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971939F1FEEA2E900F3B3C2 /* RoundView.swift */; };
 		797193A21FEEA3CD00F3B3C2 /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797193A11FEEA3CD00F3B3C2 /* RoundLabel.swift */; };
@@ -56,7 +55,6 @@
 		797193811FDDAE4000F3B3C2 /* LessonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogic.swift; sourceTree = "<group>"; };
 		7971938D1FDDD75500F3B3C2 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPlus.swift; sourceTree = "<group>"; };
-		797193961FE04FEE00F3B3C2 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		7971939D1FE54D7600F3B3C2 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		7971939F1FEEA2E900F3B3C2 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		797193A11FEEA3CD00F3B3C2 /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
@@ -207,21 +205,12 @@
 		797193831FDDBBDD00F3B3C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				797193951FE04FC100F3B3C2 /* ScheduleView */,
 				7971938F1FDDEA8A00F3B3C2 /* UIViewPlus.swift */,
 				7971939F1FEEA2E900F3B3C2 /* RoundView.swift */,
 				797193A11FEEA3CD00F3B3C2 /* RoundLabel.swift */,
 				797193A71FEEF8E700F3B3C2 /* Alert.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		797193951FE04FC100F3B3C2 /* ScheduleView */ = {
-			isa = PBXGroup;
-			children = (
-				797193961FE04FEE00F3B3C2 /* ScheduleView.swift */,
-			);
-			path = ScheduleView;
 			sourceTree = "<group>";
 		};
 		797193A31FEEF0FB00F3B3C2 /* ViewModels */ = {
@@ -418,7 +407,6 @@
 				7944EFC21FDD8F98008150F7 /* Subgroup.swift in Sources */,
 				797193A51FEEF11800F3B3C2 /* GroupViewModel.swift in Sources */,
 				7971939E1FE54D7600F3B3C2 /* ScheduleViewCell.swift in Sources */,
-				797193971FE04FEE00F3B3C2 /* ScheduleView.swift in Sources */,
 				7944EFBE1FDD8F98008150F7 /* Day.swift in Sources */,
 				79B3C19B1F851267001A9FB3 /* AppDelegate.swift in Sources */,
 				797193821FDDAE4000F3B3C2 /* LessonLogic.swift in Sources */,

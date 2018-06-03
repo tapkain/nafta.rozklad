@@ -10,17 +10,31 @@ import UIKit
 import SwiftDate
 
 class LessonsListScene: UIViewController {
-  weak var scheduleCollectionView: UICollectionView!
   weak var previousDayNumberButton: UIButton?
-  var currentVisibleDay: Day?
+  var currentVisibleDay: Day? {
+    didSet {
+      lessons = LessonLogic.sharedInstance.getLessons(for: currentVisibleDay!)
+    }
+  }
   
+  var lessons = [Lesson]()
+  
+  @IBOutlet weak var tableView: UITableView!
   @IBOutlet var dayNumberButtons: [UIButton]!
   @IBOutlet weak var dayNumbersContainer: UIView!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    initScheduleCollectionView()
-    
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.reloadData()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    tableView.delegate = nil
+    tableView.dataSource = nil
+    lessons = [Lesson]()
   }
   
   override func viewDidLayoutSubviews() {
@@ -33,10 +47,6 @@ class LessonsListScene: UIViewController {
 // MARK: - Actions
 extension LessonsListScene {
   @objc func dayNumberButtonPressed(_ sender: UIButton) {
-    if let index = dayNumberButtons.index(of: sender), sender != previousDayNumberButton {
-      let indexPath = IndexPath(row: index, section: 0)
-      scheduleCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
     changePreviousDayNumberButton(sender)
   }
   
@@ -53,6 +63,7 @@ extension LessonsListScene {
     
     if let index = dayNumberButtons.index(of: sender) {
       currentVisibleDay = Day(rawValue: index + 1)
+      tableView.reloadData()
     }
     
     previousDayNumberButton = sender
@@ -76,92 +87,41 @@ extension LessonsListScene {
       button.addTarget(self, action: #selector(dayNumberButtonPressed(_:)), for: .touchUpInside)
       button.isExclusiveTouch = true
       
-      if i == Formatter.weekday(for: today) {
+      let weekday = Formatter.weekday(for: today) - 1
+      if i == weekday {
         button.sendActions(for: .touchUpInside)
       }
     }
   }
-  
-  func initScheduleCollectionView() {
-    let layout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .horizontal
-    let collection = UICollectionView(frame: view.frame,  collectionViewLayout: layout)
-    scheduleCollectionView = collection
-    scheduleCollectionView.showsHorizontalScrollIndicator = false
-    scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
-    scheduleCollectionView.isPagingEnabled = true
-    scheduleCollectionView.backgroundColor = UIColor.white
-    view.addSubview(scheduleCollectionView)
-    scheduleCollectionView.register(ScheduleViewCell.self, forCellWithReuseIdentifier: ScheduleViewCell.identifier)
-    
-    NSLayoutConstraint.activate([
-      scheduleCollectionView.topAnchor.constraint(equalTo: dayNumbersContainer.bottomAnchor),
-      scheduleCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      scheduleCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      scheduleCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    ])
-    
-    scheduleCollectionView.delegate = self
-    scheduleCollectionView.dataSource = self
-    scheduleCollectionView.reloadData()
-  }
 }
 
 
-// MARK: - ScheduleViewDataSource
-extension LessonsListScene: ScheduleViewDataSource {
-  func scheduleView(view for: ScheduleEvent) -> UIView {
-    return UIView()
+// MARK: - UITableViewDataSource
+extension LessonsListScene: UITableViewDelegate, UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
   }
   
-  func scheduleViewGenerateEvents(_ scheduleView: ScheduleView) -> [ScheduleEvent] {
-    guard let day = currentVisibleDay else {
-      return []
-    }
-    
-    let filter = Preferences.sharedInstance.lessonFilter
-    return LessonLogic.sharedInstance.getLessons(for: day, week: filter.week, subgroup: filter.subgroup)
-  }
-}
-
-
-// MARK: - UICollectionViewDelegate
-extension LessonsListScene: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: scheduleCollectionView.frame.width, height: scheduleCollectionView.frame.height)
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return lessons.count
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    return tableView.dequeueReusableCell(withIdentifier: ScheduleViewCell.identifier, for: indexPath)
   }
   
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    let pageWidth = scrollView.frame.width
-    let index = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
-    
-    let sender = dayNumberButtons[index]
-    changePreviousDayNumberButton(sender)
-  }
-}
-
-
-// MARK: - UICollectionViewDataSource
-extension LessonsListScene: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleViewCell.identifier, for: indexPath)
-    return cell
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    let lesson = lessons[indexPath.row]
     guard let cell = cell as? ScheduleViewCell else {
       return
     }
-    
-    cell.scheduleView.dataSource = self
-    cell.scheduleView.reloadData()
+    cell.lessonName.text = lesson.name
+    cell.lessonNumber.text = String(lesson.period)
+    cell.lessonType.text = lesson.type
+    cell.teacher.text = lesson.teacher
   }
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 7
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 108
   }
 }

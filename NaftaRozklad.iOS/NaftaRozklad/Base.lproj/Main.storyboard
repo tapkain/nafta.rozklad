@@ -387,19 +387,104 @@
                                     <constraint firstItem="jvX-Xa-AMd" firstAttribute="top" secondItem="oZH-HD-dBl" secondAttribute="bottom" id="wn4-xS-vmC"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icd-gU-ElK">
+                                <rect key="frame" x="0.0" y="170" width="375" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleViewCell" rowHeight="108" id="hGd-hC-8ll" customClass="ScheduleViewCell" customModule="NaftaRozklad" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="108"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hGd-hC-8ll" id="LOh-cf-fOh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gXl-yO-ScO">
+                                                    <rect key="frame" x="15" y="11" width="175" height="88"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theoretical Physics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFf-hA-A65">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sheketa V.I." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ght-LX-IXW">
+                                                            <rect key="frame" x="0.0" y="39" width="76" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mik-Jj-vUC">
+                                                            <rect key="frame" x="0.0" y="71" width="40" height="17"/>
+                                                            <color key="backgroundColor" red="0.24177901446376684" green="0.81952792406082153" blue="0.26008525440546182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="qlJ-wR-OZR"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbI-Yg-ahJ">
+                                                    <rect key="frame" x="296" y="39" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.68627450980392157" green="0.33725490196078434" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="PpF-Iq-CnP"/>
+                                                        <constraint firstAttribute="width" constant="30" id="mwk-1h-FhG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gXl-yO-ScO" firstAttribute="leading" secondItem="LOh-cf-fOh" secondAttribute="leadingMargin" id="0cV-10-2Wj"/>
+                                                <constraint firstItem="gXl-yO-ScO" firstAttribute="top" secondItem="LOh-cf-fOh" secondAttribute="topMargin" id="Cmr-Oj-5AZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IbI-Yg-ahJ" secondAttribute="trailing" constant="34" id="QjV-iF-xCm"/>
+                                                <constraint firstItem="IbI-Yg-ahJ" firstAttribute="centerY" secondItem="LOh-cf-fOh" secondAttribute="centerY" id="S1Y-pm-stX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lessonName" destination="tFf-hA-A65" id="DMw-zr-5i7"/>
+                                            <outlet property="lessonNumber" destination="IbI-Yg-ahJ" id="hdl-M3-RyK"/>
+                                            <outlet property="lessonType" destination="mik-Jj-vUC" id="trH-kd-itU"/>
+                                            <outlet property="teacher" destination="ght-LX-IXW" id="l0a-ir-YO4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nzT-VE-ONC" id="2B5-qV-HvP"/>
+                                    <outlet property="delegate" destination="nzT-VE-ONC" id="nZd-ca-f3X"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="49y-su-oUR" firstAttribute="top" secondItem="bAU-3O-dZv" secondAttribute="top" id="8ar-Hp-RK8"/>
+                            <constraint firstItem="O4B-BL-Zf1" firstAttribute="bottom" secondItem="icd-gU-ElK" secondAttribute="bottom" id="OfU-0m-SNz"/>
+                            <constraint firstItem="icd-gU-ElK" firstAttribute="leading" secondItem="O4B-BL-Zf1" secondAttribute="leading" id="S8Z-KX-9BI"/>
                             <constraint firstItem="49y-su-oUR" firstAttribute="leading" secondItem="O4B-BL-Zf1" secondAttribute="leading" id="aHC-Ux-HG4"/>
+                            <constraint firstItem="icd-gU-ElK" firstAttribute="top" secondItem="49y-su-oUR" secondAttribute="bottom" id="eYa-on-85g"/>
                             <constraint firstItem="49y-su-oUR" firstAttribute="trailing" secondItem="O4B-BL-Zf1" secondAttribute="trailing" id="gkk-Sy-bCa"/>
+                            <constraint firstItem="O4B-BL-Zf1" firstAttribute="trailing" secondItem="icd-gU-ElK" secondAttribute="trailing" id="kyG-8k-mOt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O4B-BL-Zf1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Lessons" image="LessonsIcon" id="Qx2-7M-iUy"/>
                     <connections>
                         <outlet property="dayNumbersContainer" destination="jvX-Xa-AMd" id="ofd-Jq-jEs"/>
+                        <outlet property="tableView" destination="icd-gU-ElK" id="o6l-Hx-jfI"/>
                         <outletCollection property="dayNumberButtons" destination="ozq-Ed-bw3" collectionClass="NSMutableArray" id="0Xb-em-Klb"/>
                         <outletCollection property="dayNumberButtons" destination="DqX-Rj-GF0" collectionClass="NSMutableArray" id="jG1-Cz-zTm"/>
                         <outletCollection property="dayNumberButtons" destination="20P-pt-yA8" collectionClass="NSMutableArray" id="bbp-p6-Svh"/>
@@ -411,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoQ-A9-nxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2160" y="548"/>
+            <point key="canvasLocation" x="2159.1999999999998" y="547.37631184407803"/>
         </scene>
         <!--About-->
         <scene sceneID="0mn-VX-Exc">

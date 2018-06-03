@@ -43,22 +43,18 @@ class LessonLogic {
       WebApi.sharedInstance.getSchedule(for: group, week: .denumerator, subgroup: .second)
     }.then { days -> Void in
       self.lessons.append(contentsOf: Lesson.from(group: group, for: days))
-      let set = self.lessons.unique
-      //self.makeUnique()
       
       try? RealmManager.sharedInstance.deleteAll(Lesson.self)
-      try? RealmManager.sharedInstance.insert(self.lessons)
+      try? RealmManager.sharedInstance.insert(self.lessons.unique)
     }
   }
   
-  func getLessons(for day: Day, week: Week = .common, subgroup: Subgroup = .common) -> [ScheduleEvent] {
+  func getLessons(for day: Day, week: Week = .common, subgroup: Subgroup = .common) -> [Lesson] {
     guard let lessons = try? RealmManager.sharedInstance.get(Lesson.self).filter("dayValue == %@ && weekValue == %@ && subgroupValue == %@", day.rawValue, week.rawValue, subgroup.rawValue) else {
       return []
     }
     
-    return lessons.flatMap {
-      $0.toScheduleEvent()
-    }
+    return Array(lessons)
   }
 }
 

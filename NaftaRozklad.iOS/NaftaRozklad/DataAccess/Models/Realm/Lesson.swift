@@ -35,28 +35,15 @@ class Lesson: Object, Codable {
   @objc dynamic var type: String? = nil
   @objc dynamic var name = ""
   @objc dynamic var teacher: String? = nil
-}
-
-
-extension Lesson {
-  static func == (lhs: Lesson, rhs: Lesson) -> Bool {
-    return lhs.day == rhs.day
+  
+  override func isEqual(_ object: Any?) -> Bool {
+    if let product = object as? Lesson {
+      return product.day == self.day && product.name == self.name
+    } else {
+      return false
+    }
   }
 }
-//// MARK: - Hashable
-//extension Lesson {
-//  override var hashValue: Int {
-//    return
-////      group.hashValue ^
-////      period.hashValue ^
-//      day.hashValue// ^
-////      week.hashValue ^
-////      subgroup.hashValue ^
-////      (type?.hashValue ?? 0) ^
-////      name.hashValue ^
-////      (teacher?.hashValue ?? 0)
-//  }
-//}
 
 
 // MARK: - DayDto Convert
@@ -98,36 +85,5 @@ extension Lesson {
     lesson.name = lessonDto.name
     
     return lesson
-  }
-}
-
-
-// MARK: ScheduleEvent Convert
-extension Lesson {
-  static let lessonHours: [Int: [DateComponents]] = [
-    1: [DateComponents(hour: 8, minute: 0), DateComponents(hour: 9, minute: 20)],
-    2: [DateComponents(hour: 9, minute: 35), DateComponents(hour: 10, minute: 55)],
-    3: [DateComponents(hour: 11, minute: 10), DateComponents(hour: 12, minute: 30)],
-    4: [DateComponents(hour: 13, minute: 0), DateComponents(hour: 14, minute: 20)],
-    5: [DateComponents(hour: 14, minute: 35), DateComponents(hour: 16, minute: 0)],
-    6: [DateComponents(hour: 16, minute: 15), DateComponents(hour: 17, minute: 30)]
-  ]
-  
-  func toScheduleEvent() -> ScheduleEvent {
-    let today = DateInRegion()
-    var cmp = DateComponents()
-    cmp.year = today.year
-    cmp.month = today.month
-    cmp.day = today.day - (today.weekday - day.rawValue)
-    
-    cmp.hour = Lesson.lessonHours[period]![0].hour
-    cmp.minute = Lesson.lessonHours[period]![0].minute
-    let startDate = DateInRegion(components: cmp)
-    
-    cmp.hour = Lesson.lessonHours[period]![1].hour
-    cmp.minute = Lesson.lessonHours[period]![1].minute
-    let endDate = DateInRegion(components: cmp)
-    
-    return ScheduleEvent(startDate: startDate!, endDate: endDate!)
   }
 }
